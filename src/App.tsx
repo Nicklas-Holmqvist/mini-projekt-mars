@@ -1,9 +1,10 @@
-import React from 'react';
+import React from "react";
+import Rover from "./components/Rover";
 
 function App() {
   return (
     <div className="App">
-        <h1>hej</h1>
+      <Rover />
     </div>
   );
 }
