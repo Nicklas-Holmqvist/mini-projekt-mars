@@ -1,2 +1,9 @@
+import React from 'react'
 
-export {}
+function Layout() {
+    return(
+        <p>Layout</p>
+    )
+}
+
+export default Layout
