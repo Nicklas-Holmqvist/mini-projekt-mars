@@ -1,19 +1,17 @@
 
 import React, { CSSProperties } from 'react';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Header from './Header';
 
 function MarsPlot() {
 
     return(
         <>
-        <div style={header}>
-        <FontAwesomeIcon icon={faBars} />
-            <h2>Properties on Mars</h2>
-            <span></span>
-
-        </div>
+        <Header ></Header>
         <div style={mainContainer}>
+
+            <div className="cardContainer" style={cardContainerStyle}>
+
+            </div>
 
         </div>
         </>
@@ -22,26 +20,21 @@ function MarsPlot() {
 
 }
 
-const header: CSSProperties = {
-    background: '#8A2424',
-    color: 'white',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '0 1rem'
-
-}
 
 
 const mainContainer: CSSProperties = {
     background: '#E5E5E5',
     display: 'flex',
-    marginTop: '4rem',
-    height: '100%',
-    width: 'auto'
+    // marginTop: '4rem',
+    height: '100vh',
+    width: '100%'
 
 
 }
 
+
+const cardContainerStyle: CSSProperties = {
+    padding: '1rem'
+}
 
 export default MarsPlot;
