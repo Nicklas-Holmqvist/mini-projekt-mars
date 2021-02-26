@@ -3,11 +3,13 @@ import LandingPage from "./LandingPage";
 import Rover from './Rover';
 import MarsPlot from './MarsPlot';
 import Header from './Header';
+import MarsInformation from './MarsInformation';
 import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    BrowserRouter
   } from 'react-router-dom';
 
 
@@ -22,10 +24,14 @@ function Layout() {
     return(
         <div className="marsApp" style={marsAppStyle}>
             <Header />
-            <Route exact path="/">
-            <LandingPage />
+            <BrowserRouter>
+            <Switch>
 
-            </Route>
+            <Route exact path="/" component={LandingPage} />            
+            <Route path="/MarsInformation" component={MarsInformation} />
+            
+            </Switch>
+            </BrowserRouter>
             {/* <Rover /> */}
     
             {/* <MarsPlot /> */}

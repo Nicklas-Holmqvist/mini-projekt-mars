@@ -17,16 +17,15 @@ function LandingPage() {
             <div className="landingImage" style={landingImageContainer}>
                 <img src="./assets/mars.png" style={landingImage} alt="mars"/>
             </div>
-            <Router>
+            {/* <Router> */}
+                <Switch>
                         <Link to="/MarsInformation">
                         <Button />
                         </Link>
-                <Switch>
-                    <Route path="/MarsInformation">
-                        <MarsInformation />
-                    </Route>
+                    <Route path="/MarsInformation" component={MarsInformation} />
+                     
                 </Switch>
-            </Router>
+            {/* </Router> */}
         </div>
     )
 }
