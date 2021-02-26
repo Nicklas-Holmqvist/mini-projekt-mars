@@ -8,9 +8,10 @@ import Layout from './components/Layout';
 function App() {
   return (
     <ErrorBoundary>
-      <Layout/>
+      <Layout/> 
     </ErrorBoundary>
-  );
+  )
+    
 }
 
 

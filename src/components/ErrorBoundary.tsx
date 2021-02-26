@@ -1,6 +1,7 @@
 import React, { Component, CSSProperties, ErrorInfo } from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 
-interface Props {}
+interface Props extends RouteComponentProps {}
 interface State {
   hasError: boolean;
 }
@@ -18,11 +19,18 @@ class ErrorBoundary extends Component<Props, State> {
     console.log({error, errorInfo})
   }
 
+  navigateBack = () => {
+    console.log('back')
+    this.props.history.goBack();
+  }
+
   render() {
     if (this.state.hasError) {
       return (
         <div style={rootStyle}>
-          <h3 style={textStyle}>ERROR 404</h3>
+          <h2 style={textStyle}>ERROR 404</h2>
+          <img src="./assets/mars-spinning.gif" alt="mars spinning"/>
+          <button style={buttonStyle} onClick={this.navigateBack}>Gå Tillbaka</button>
         </div>
       );
     }
@@ -37,12 +45,25 @@ const rootStyle: CSSProperties = {
   display: 'flex',
   justifyContent: 'center', 
   alignItems: 'center',
-  background: 'black'
+  flexDirection: 'column',
+  background: '#040204'
 }
 
 const textStyle: CSSProperties = {
   textAlign: 'center',
-  color: 'white'
+  color: 'white',
+  fontSize: '2.5rem',
+  transform: 'rotate(-12deg)',
+  marginBottom: '3rem'
 }
 
-export default ErrorBoundary;
+const buttonStyle: CSSProperties = {
+  background: 'white',
+  border: '1px solid black',
+  borderRadius: '6px',
+  padding: '.75rem 1.5rem',
+  fontFamily: 'inherit',
+  cursor: 'pointer'
+}
+
+export default withRouter(ErrorBoundary);
