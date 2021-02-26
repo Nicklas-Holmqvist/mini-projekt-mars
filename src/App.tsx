@@ -1,10 +1,11 @@
 import React from "react";
-import Rover from "./components/Rover";
+
+import CardContainer from "./components/Cards/CardContainer";
 
 function App() {
   return (
     <div className="App">
-      <Rover />
+      <CardContainer />
     </div>
   );
 }
