@@ -1,5 +1,6 @@
 import React, { CSSProperties } from 'react'
 import LandingPage from "./LandingPage";
+import Rover from './Rover';
 
 function Layout() {
 
@@ -12,6 +13,7 @@ function Layout() {
     return(
         <div className="marsApp" style={marsAppStyle}>
             <LandingPage />
+            <Rover />
         </div>
     )
 }
