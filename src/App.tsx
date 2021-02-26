@@ -1,18 +1,14 @@
-import React, { CSSProperties } from "react";
-import Layout from "./components/Layout";
-
+import React from "react";
+import Rover from "./components/Rover";
+import MarsPlot from "./components/MarsPlot"
 
 function App() {
   return (
-    <div className="App" style={Fullscreen}>
-      <Layout />
+    <div className="App">
+      <Rover />
+      <MarsPlot />
     </div>
   );
-}
-
-const Fullscreen:CSSProperties = {
-  height: '100%',
-  width: '100%'
 }
 
 
