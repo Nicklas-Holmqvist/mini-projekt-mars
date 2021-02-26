@@ -1,31 +1,40 @@
-import React, { CSSProperties } from 'react'
+import React, { Component, CSSProperties } from 'react'
 import LandingPage from "./LandingPage";
 import HamburgerMenu from './Menu';
 import Rover from './Rover';
 
-function Layout() {
+interface Props {}
+interface State {
+    isMenuOpen: boolean;
+}
 
-    const marsAppStyle:CSSProperties = {
+class Layout extends Component<Props, State> {
+    state: State = {
+        isMenuOpen: false
+    }
+    
+    marsAppStyle: CSSProperties = {
         backgroundColor: '#8A2424',
         height: '100%',
         width: '100%'
     }
 
-    const handleIconClick = () => {
-        console.log('open')
+    toggleSidebar = () => {
+        this.setState({ isMenuOpen: !this.state.isMenuOpen })
     }
-
-    return(
-        <div className="marsApp" style={marsAppStyle}>
-            <HamburgerMenu onIconClick={handleIconClick}/>
-            <LandingPage />
-            <Rover />
-        </div>
-    )
+    
+    render () {
+        return (
+            <div className="marsApp" style={this.marsAppStyle}>
+                <HamburgerMenu 
+                    onIconClick={this.toggleSidebar} 
+                    isOpen={this.state.isMenuOpen}
+                />
+                <LandingPage />
+                <Rover />
+            </div>
+        )
+    }    
 }
 
-
-
-
-
-export default Layout
+export default Layout;

@@ -17,10 +17,13 @@ class Rover extends React.Component {
     console.log(roverPhotos[0].img_src);
 
   }
+
   render() {
     return (
-    <p>hej</p>
+      <p>hej</p>
     )
   }
+
 }
+
 export default Rover;

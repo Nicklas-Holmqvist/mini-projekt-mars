@@ -24,7 +24,8 @@ const landingPageStyling: CSSProperties = {
 }
 
 const landingH1eStyle: CSSProperties = {
-    fontSize: '4rem'
+    fontSize: '4rem',
+    color: 'white'
 }
 
 const landingImageContainer: CSSProperties = {

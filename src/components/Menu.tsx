@@ -2,23 +2,42 @@ import React, { CSSProperties } from 'react';
 
 interface Props {
   onIconClick: () => void; 
+  isOpen: boolean;
 }
 
 function HamburgerMenu(props: Props) {
-  return (
-    <nav style={rootStyle}>
-      <div style={iconStyle} className="icon" onClick={props.onIconClick}>
-        <div className="line line-1" style={lineStyle}></div>
-        <div className="line line-2" style={lineStyle}></div>
-        <div className="line line-3" style={lineStyle}></div>
-      </div>
-      <ul style={ulStyle}>
-        <li style={liStyle}>Hem</li>
-        <li style={liStyle}>Rover</li>
-        <li style={liStyle}>Tomter</li>
-      </ul>
-    </nav>
-  )
+
+  if (!props.isOpen) 
+    return (
+      <nav style={rootStyle}>
+        <div style={iconStyle} className="icon" onClick={props.onIconClick}>
+          <div className="line line-1" style={lineStyle}></div>
+          <div className="line line-2" style={lineStyle}></div>
+          <div className="line line-3" style={lineStyle}></div>
+        </div>
+      </nav>
+    )
+ 
+    return (
+      <nav style={rootStyle}>
+        <div style={iconStyle} className="icon" onClick={props.onIconClick}>
+          <div className="line line-1" style={lineStyle}></div>
+          <div className="line line-2" style={lineStyle}></div>
+          <div className="line line-3" style={lineStyle}></div>
+        </div>
+        <ul 
+          style={{
+            ...ulStyle,
+            left: props.isOpen ? 0 : '-100%'
+          }} 
+        >
+          <li style={liStyle}>Hem</li>
+          <li style={liStyle}>Rover</li>
+          <li style={liStyle}>Tomter</li>
+        </ul>
+      </nav>
+    )
+  
 }
 
 const lineStyle: CSSProperties = {
@@ -32,7 +51,7 @@ const lineStyle: CSSProperties = {
 const ulStyle: CSSProperties = {
   position: 'fixed',
   background: '#461515',
-  left: '-100%',
+  left: 0,
   bottom: 0,
   top: 0,
   width: '16rem',
@@ -43,7 +62,8 @@ const ulStyle: CSSProperties = {
   justifyContent: 'center',
   listStyle: 'none',
   textAlign: 'center',
-  zIndex: 5
+  zIndex: 5,
+  transition: 'left 1000ms'
 }
 
 const liStyle: CSSProperties = {
@@ -64,6 +84,5 @@ const rootStyle: CSSProperties = {
   top: '30px',
   left: '40px',
 }
-
 
 export default HamburgerMenu;
