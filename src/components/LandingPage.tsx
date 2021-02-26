@@ -1,12 +1,10 @@
 import React, { CSSProperties } from 'react'
 import Button from './Button'
-import HamburgerMenu from './Menu'
 
 function LandingPage() {
 
     return(
         <div style={landingPageStyling}>
-            <HamburgerMenu />
             <h1 style={landingH1eStyle}>Mars</h1>
             <div className="landingImage" style={landingImageContainer}>
                 <img src="./assets/mars.png" style={landingImage} alt="mars"/>

@@ -1,5 +1,6 @@
 import React, { CSSProperties } from 'react'
 import LandingPage from "./LandingPage";
+import HamburgerMenu from './Menu';
 import Rover from './Rover';
 
 function Layout() {
@@ -10,8 +11,13 @@ function Layout() {
         width: '100%'
     }
 
+    const handleIconClick = () => {
+        console.log('open')
+    }
+
     return(
         <div className="marsApp" style={marsAppStyle}>
+            <HamburgerMenu onIconClick={handleIconClick}/>
             <LandingPage />
             <Rover />
         </div>
