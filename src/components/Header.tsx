@@ -1,6 +1,7 @@
 
 import React, { CSSProperties } from 'react';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Header() {
@@ -9,8 +10,9 @@ function Header() {
         <>
         <div style={header}>
         <FontAwesomeIcon style={iconStyle} icon={faBars} />
-            <h2>Properties on Mars</h2>
-            <span></span>
+            <h2>Path</h2>
+        <FontAwesomeIcon style={iconStyle} icon={faMoon} />
+            
 
         </div>
         </>
