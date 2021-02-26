@@ -1,46 +1,40 @@
-import React, { CSSProperties } from 'react'
+import React, { Component, CSSProperties } from 'react'
 import LandingPage from "./LandingPage";
+import HamburgerMenu from './Menu';
 import Rover from './Rover';
-import MarsPlot from './MarsPlot';
-import Header from './Header';
-import MarsInformation from './MarsInformation';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    BrowserRouter
-  } from 'react-router-dom';
 
+interface Props {}
+interface State {
+    isMenuOpen: boolean;
+}
 
-function Layout() {
-
-    const marsAppStyle:CSSProperties = {
+class Layout extends Component<Props, State> {
+    state: State = {
+        isMenuOpen: false
+    }
+    
+    marsAppStyle: CSSProperties = {
         backgroundColor: '#8A2424',
         height: '100%',
         width: '100%'
     }
 
-    return(
-        <div className="marsApp" style={marsAppStyle}>
-            <Header />
-            <BrowserRouter>
-            <Switch>
-
-            <Route exact path="/" component={LandingPage} />            
-            <Route path="/MarsInformation" component={MarsInformation} />
-            
-            </Switch>
-            </BrowserRouter>
-            {/* <Rover /> */}
+    toggleSidebar = () => {
+        this.setState({ isMenuOpen: !this.state.isMenuOpen })
+    }
     
-            {/* <MarsPlot /> */}
-        </div>
-    )
+    render () {
+        return (
+            <div className="marsApp" style={this.marsAppStyle}>
+                <HamburgerMenu 
+                    onIconClick={this.toggleSidebar} 
+                    isOpen={this.state.isMenuOpen}
+                />
+                <LandingPage />
+                <Rover />
+            </div>
+        )
+    }    
 }
 
-
-
-
-
-export default Layout
+export default Layout;
