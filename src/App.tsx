@@ -1,13 +1,11 @@
 import React from "react";
-
-import CardContainer from "./components/Cards/CardContainer";
+import Rover from "./components/Rover";
+import MarsPlot from "./components/MarsPlot";
+import LandingPage from "./components/LandingPage";
+import Layout from "./components/Layout";
 
 function App() {
-  return (
-    <div className="App">
-      <CardContainer />
-    </div>
-  );
+  return <Layout />;
 }
 
 export default App;
