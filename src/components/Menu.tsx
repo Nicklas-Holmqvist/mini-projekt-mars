@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
 import React, { CSSProperties } from 'react';
 
 interface Props {
@@ -7,45 +9,42 @@ interface Props {
 
 function HamburgerMenu(props: Props) {
 
-  if (!props.isOpen) 
-    return (
-      <nav style={rootStyle}>
-        <div style={iconStyle} className="icon" onClick={props.onIconClick}>
-          <div className="line line-1" style={lineStyle}></div>
-          <div className="line line-2" style={lineStyle}></div>
-          <div className="line line-3" style={lineStyle}></div>
-        </div>
-      </nav>
-    )
+  if (props.isOpen) return (
+    <nav style={rootStyle}>
+      <div style={iconStyle} className="icon" onClick={props.onIconClick}>
+        <FontAwesomeIcon style={iconStyle} icon={faTimes} />      
+      </div>
+      <ul 
+        style={{
+          ...ulStyle,
+          left: props.isOpen ? 0 : '-100%'
+        }} 
+      >
+        <li style={liStyle}>Hem</li>
+        <li style={liStyle}>Rover</li>
+        <li style={liStyle}>Tomter</li>
+      </ul>
+    </nav>
+  )
  
-    return (
-      <nav style={rootStyle}>
-        <div style={iconStyle} className="icon" onClick={props.onIconClick}>
-          <div className="line line-1" style={lineStyle}></div>
-          <div className="line line-2" style={lineStyle}></div>
-          <div className="line line-3" style={lineStyle}></div>
-        </div>
-        <ul 
-          style={{
-            ...ulStyle,
-            left: props.isOpen ? 0 : '-100%'
-          }} 
-        >
-          <li style={liStyle}>Hem</li>
-          <li style={liStyle}>Rover</li>
-          <li style={liStyle}>Tomter</li>
-        </ul>
-      </nav>
-    )
+  return (
+    <nav style={rootStyle}>
+      <div style={iconStyle} className="icon" onClick={props.onIconClick}>
+        <FontAwesomeIcon style={iconStyle} icon={faBars} />
+      </div>
+      <ul 
+        style={{
+          ...ulStyle,
+          left: props.isOpen ? 0 : '-100%'
+        }} 
+      >
+        <li style={liStyle}>Hem</li>
+        <li style={liStyle}>Rover</li>
+        <li style={liStyle}>Tomter</li>
+      </ul>
+    </nav>
+  )
   
-}
-
-const lineStyle: CSSProperties = {
-  height: '2px',
-  width: '28px',
-  marginBottom: '7px',
-  background: 'white',
-  zIndex: 10
 }
 
 const ulStyle: CSSProperties = {
@@ -63,7 +62,7 @@ const ulStyle: CSSProperties = {
   listStyle: 'none',
   textAlign: 'center',
   zIndex: 5,
-  transition: 'left 1000ms'
+  transition: 'left 600ms'
 }
 
 const liStyle: CSSProperties = {
@@ -75,7 +74,12 @@ const liStyle: CSSProperties = {
 
 const iconStyle: CSSProperties = {
   cursor: 'pointer',
+  color: 'white',
+  fontSize: '2rem',
   position: 'fixed',
+  top: '25px',
+  left: '40px',
+  transition: '300ms',
   zIndex: 11
 }
 
