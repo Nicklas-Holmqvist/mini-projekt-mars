@@ -1,6 +1,15 @@
 import React, { CSSProperties } from 'react'
 import LandingPage from "./LandingPage";
 import Rover from './Rover';
+import MarsPlot from './MarsPlot';
+import Header from './Header';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from 'react-router-dom';
+
 
 function Layout() {
 
@@ -12,8 +21,14 @@ function Layout() {
 
     return(
         <div className="marsApp" style={marsAppStyle}>
+            <Header />
+            <Route exact path="/">
             <LandingPage />
-            <Rover />
+
+            </Route>
+            {/* <Rover /> */}
+    
+            {/* <MarsPlot /> */}
         </div>
     )
 }

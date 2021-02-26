@@ -1,2 +1,13 @@
+import React from 'react';
 
-export {}
+
+function MarsInformation() {
+    return(
+        <h1>
+            MAAAAAARS
+        </h1>
+    )
+
+}
+
+export default MarsInformation;

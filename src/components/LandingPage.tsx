@@ -1,5 +1,13 @@
-import React, { CSSProperties } from 'react'
-import Button from './Button'
+import React, { CSSProperties } from 'react';
+import Button from './Button';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from 'react-router-dom';
+import MarsInformation from './MarsInformation';
+
 
 function LandingPage() {
 
@@ -9,7 +17,16 @@ function LandingPage() {
             <div className="landingImage" style={landingImageContainer}>
                 <img src="./assets/mars.png" style={landingImage} alt="mars"/>
             </div>
-            <Button />
+            <Router>
+                        <Link to="/MarsInformation">
+                        <Button />
+                        </Link>
+                <Switch>
+                    <Route path="/MarsInformation">
+                        <MarsInformation />
+                    </Route>
+                </Switch>
+            </Router>
         </div>
     )
 }
