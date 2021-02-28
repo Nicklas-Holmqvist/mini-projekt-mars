@@ -5,7 +5,7 @@ import LandingPage from "./components/LandingPage";
 import Layout from "./components/Layout";
 
 function App() {
-  return <Layout />;
+  return <MarsPlot />;
 }
 
 export default App;

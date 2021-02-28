@@ -39,8 +39,10 @@ const CardContainer = () => {
 const containerStyle: CSSProperties = {
   display: "flex",
   flexDirection: "row",
-  backgroundColor: "#414141",
+  backgroundColor: "black",
   justifyContent: "space-around",
   flexWrap: "wrap",
+  width: "100%",
+  marginTop: "5rem",
 };
 export default CardContainer;
