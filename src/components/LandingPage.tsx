@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import Button from './Button';
 import {
-    BrowserRouter as Router,
+//    BrowserRouter as Router,
     Switch,
     Route,
     Link

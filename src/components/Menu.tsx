@@ -1,6 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
 import React, { CSSProperties } from 'react';
+import {
+//  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
+
+import LandingPage from "./LandingPage";
+import Rover from "./Rover";
+import MarsPlot from "./MarsPlot";
 
 interface Props {
   onIconClick: () => void; 
@@ -20,9 +30,26 @@ function HamburgerMenu(props: Props) {
           left: props.isOpen ? 0 : '-100%'
         }} 
       >
-        <li style={liStyle}>Hem</li>
-        <li style={liStyle}>Rover</li>
+        <Switch>
+        <Link to="/LandingPage">
+          <li style={liStyle}>Hem</li>
+        </Link>
+          <Route path="/LandingPage" component={LandingPage} />
+        </Switch>
+
+        <Switch>
+        <Link to="/Rover">          
+           <li style={liStyle}>Rover</li>
+        </Link>  
+          <Route path="/Rover" component={Rover} />
+        </Switch>
+
+        <Switch>
+          <Link to="/MarsPlot">
         <li style={liStyle}>Tomter</li>
+          </Link>
+          <Route path="/MarsPlot" component={MarsPlot} />
+        </Switch>
       </ul>
     </nav>
   )
