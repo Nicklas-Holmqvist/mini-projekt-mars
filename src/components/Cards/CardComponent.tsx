@@ -3,6 +3,7 @@ interface Props {
   image: string;
   price: number;
   location: string;
+  moreInfo: string;
 }
 
 const CardComponent = (props: Props) => {
@@ -42,11 +43,18 @@ const CardComponent = (props: Props) => {
         <div
           style={{ ...isVisible, visibility: !isZoomed ? "hidden" : "visible" }}
         >
-          <p>adfjvknsdkfnvksnjnfvsklnfvsjknfkvns</p>
-          <p>adfjvknsdkfnvksnjnfvsklnfvsjknfkvns</p>
-          <p>adfjvknsdkfnvksnjnfvsklnfvsjknfkvns</p>
+          <p>{props.moreInfo}</p>
 
-          <button onClick={() => setZoom(false)}>close</button>
+          <button
+            style={{
+              ...buttonhiddenStyle,
+              backgroundColor: "pink",
+              marginBottom: "10px",
+            }}
+            onClick={() => setZoom(false)}
+          >
+            close
+          </button>
         </div>
       </div>
     </div>
@@ -83,6 +91,8 @@ const leftPadding: CSSProperties = {
 const isVisible: CSSProperties = {
   height: "10rem",
   transition: "height 800ms",
+  paddingLeft: "10px",
+  marginBottom: "10px",
 };
 const flexContainer: CSSProperties = {
   display: "flex",

@@ -5,22 +5,28 @@ const CardContainer = () => {
     {
       img: "canyon",
       price: 120,
-      location: "sneby ",
+      location: "Canyon",
+      moreInfo:
+        "Ligger i närheten till Mars största ravin med ett härligt klimat och temperaturer kring 200 - 300 grader året om.",
     },
     {
       img: "crator",
       price: 340,
-      location: "sneby ",
+      location: "Cratern",
+      moreInfo: "Härligt område precis intill Mars största krater. ",
     },
     {
       img: "frosenLake",
       price: 790,
-      location: "sneby ",
+      location: "Sjönära ",
+      moreInfo:
+        "Sjönära tomt med härlig utsikt och temperaturer runt minus 100 - 200 grader året om. ",
     },
     {
       img: "canyon",
       price: 790,
       location: "sneby ",
+      moreInfo: "",
     },
   ];
 
@@ -31,6 +37,7 @@ const CardContainer = () => {
           image={card.img}
           price={card.price}
           location={card.location}
+          moreInfo={card.moreInfo}
         />
       ))}
     </div>
@@ -39,7 +46,7 @@ const CardContainer = () => {
 const containerStyle: CSSProperties = {
   display: "flex",
   flexDirection: "row",
-  backgroundColor: "black",
+  backgroundColor: "white",
   justifyContent: "space-around",
   flexWrap: "wrap",
   width: "100%",
