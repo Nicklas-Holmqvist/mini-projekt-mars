@@ -13,53 +13,32 @@ import {
 
 import MarsInformation from './MarsInformation';
 
-interface Props {}
-interface State {
-    isMenuOpen: boolean;
-}
-
-class Layout extends Component<Props, State> {
-    state: State = {
-        isMenuOpen: false
-    }
+class Layout extends Component {
     
     marsAppStyle: CSSProperties = {
         backgroundColor: '#8A2424',
         height: '100%',
         width: '100%'
     }
-
-    toggleSidebar = () => {
-        this.setState({ isMenuOpen: !this.state.isMenuOpen })
-    }
     
     render () {
         return (
             <BrowserRouter>
-            <div className="marsApp" style={this.marsAppStyle}>
-                <HamburgerMenu 
-                    onIconClick={this.toggleSidebar} 
-                    isOpen={this.state.isMenuOpen}
-                    />
-                {/* <LandingPage /> */}
-                {/* <Rover /> */}
+                <div className="marsApp" style={this.marsAppStyle}>                  
+                    {/* <LandingPage /> */}
+                    {/* <Rover /> */}     
 
-            
-            {/* <Header /> */}
-            
-            <Route exact path="/" component={LandingPage} />            
-            <Switch>
+                    <Header />           
+                    <Route exact path="/" component={LandingPage} />  
 
-            <Route path="/MarsInformation" component={MarsInformation} />
-            
-            </Switch>
-        
-            {/* <Rover /> */}
-    
-            {/* <MarsPlot /> */}
-     
-            </div>
-                    </BrowserRouter>
+                    <Switch>
+                        <Route path="/MarsInformation" component={MarsInformation} />
+                    </Switch>
+
+                    {/* <Rover /> */}
+                    {/* <MarsPlot /> */}
+                </div>
+            </BrowserRouter>
         )
     }    
 }
