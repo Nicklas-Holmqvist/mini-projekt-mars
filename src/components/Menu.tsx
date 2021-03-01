@@ -36,21 +36,21 @@ function HamburgerMenu() {
         }} 
       >
         <Switch>
-        <Link to="/LandingPage" style={linkStyle}>
+        <Link to="/LandingPage" style={linkStyle} onClick={toggleSidebar}>
           <li style={liStyle}>Hem</li>
         </Link>
           <Route path="/LandingPage" component={LandingPage} />
         </Switch>
 
         <Switch>
-        <Link to="/Rover"  style={linkStyle}>          
+        <Link to="/Rover"  style={linkStyle} onClick={toggleSidebar}>          
            <li style={liStyle}>Rover</li>
         </Link>  
           <Route path="/Rover" component={Rover} />
         </Switch>
 
         <Switch>
-          <Link to="/MarsPlot"  style={linkStyle}>
+          <Link to="/MarsPlot"  style={linkStyle} onClick={toggleSidebar}>
         <li style={liStyle}>Tomter</li>
           </Link>
           <Route path="/MarsPlot" component={MarsPlot} />
