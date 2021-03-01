@@ -1,23 +1,28 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties, useState } from 'react';
 
-interface Props {
-  onIconClick: () => void; 
-  isOpen: boolean;
-}
+function HamburgerMenu() {
 
-function HamburgerMenu(props: Props) {
+  let [isMenuOpen, setSidebar] = useState(false);
 
-  if (props.isOpen) return (
+  function toggleSidebar() {
+    if (!isMenuOpen) {
+      setSidebar(true)
+    } else {
+      setSidebar(false)
+    }
+  }
+
+  if (isMenuOpen) return (
     <nav style={rootStyle}>
-      <div style={iconStyle} className="icon" onClick={props.onIconClick}>
+      <div style={iconStyle} className="icon" onClick={toggleSidebar}>
         <FontAwesomeIcon style={iconStyle} icon={faTimes} />      
       </div>
       <ul 
         style={{
           ...ulStyle,
-          left: props.isOpen ? 0 : '-100%'
+          left: isMenuOpen ? 0 : '-100%'
         }} 
       >
         <li style={liStyle}>Hem</li>
@@ -29,13 +34,13 @@ function HamburgerMenu(props: Props) {
  
   return (
     <nav style={rootStyle}>
-      <div style={iconStyle} className="icon" onClick={props.onIconClick}>
+      <div style={iconStyle} className="icon" onClick={toggleSidebar}>
         <FontAwesomeIcon style={iconStyle} icon={faBars} />
       </div>
       <ul 
         style={{
           ...ulStyle,
-          left: props.isOpen ? 0 : '-100%'
+          left: isMenuOpen ? 0 : '-100%'
         }} 
       >
         <li style={liStyle}>Hem</li>
