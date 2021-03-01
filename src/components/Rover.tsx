@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 import React from "react";
 
 class Rover extends React.Component {
@@ -20,7 +20,7 @@ class Rover extends React.Component {
 
   render() {
     return (
-      <p>hej</p>
+      <span></span>
     )
   }
 

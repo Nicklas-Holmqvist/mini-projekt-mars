@@ -1,13 +1,12 @@
 import React, { Component, CSSProperties } from 'react'
 import LandingPage from "./LandingPage";
-import HamburgerMenu from './Menu';
+
 import Rover from './Rover';
 import Header from './Header';
+import MarsPlot from './MarsPlot';
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
-    Link,
     BrowserRouter
   } from 'react-router-dom';
 
@@ -29,10 +28,13 @@ class Layout extends Component {
                     {/* <Rover /> */}     
 
                     <Header />           
-                    <Route exact path="/" component={LandingPage} />  
-
+                    <Route exact path="/LandingPage" component={LandingPage} />            
                     <Switch>
-                        <Route path="/MarsInformation" component={MarsInformation} />
+        
+                    <Route path="/MarsInformation" component={MarsInformation} />
+                    <Route path="/Rover" component={Rover} />
+                    <Route path="/MarsPlot" component={MarsPlot} />
+                    
                     </Switch>
 
                     {/* <Rover /> */}

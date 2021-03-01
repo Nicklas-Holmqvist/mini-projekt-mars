@@ -9,7 +9,7 @@ function Header() {
         <>
             <div style={header}>
                 <HamburgerMenu />                
-                <h2>Path</h2>
+                <span></span>
                 <FontAwesomeIcon style={iconStyle} icon={faMoon} />
             </div>
         </>
@@ -18,6 +18,7 @@ function Header() {
 
 const header: CSSProperties = {
     background: '#8A2424',
+    height: '5rem',
     color: 'white',
     display: 'flex',
     alignItems: 'center',
@@ -26,7 +27,10 @@ const header: CSSProperties = {
 }
 
 const iconStyle: CSSProperties = {
-    fontSize: '1.7rem'
+    fontSize: '1.7rem',
+    position: 'fixed',
+    top: '25px',
+    right: '40px'
 }
 
 export default Header;

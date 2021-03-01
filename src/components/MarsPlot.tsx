@@ -1,12 +1,12 @@
 
 import React, { CSSProperties } from 'react';
-import Header from './Header';
+
 
 function MarsPlot() {
 
     return(
         <>
-        <Header ></Header>
+      
         <div style={mainContainer}>
 
             <div className="cardContainer" style={cardContainerStyle}>
