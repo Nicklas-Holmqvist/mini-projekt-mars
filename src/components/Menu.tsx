@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
-import React, { CSSProperties } from 'react';
 import {
 //  BrowserRouter as Router,
   Switch,
@@ -11,41 +10,47 @@ import {
 import LandingPage from "./LandingPage";
 import Rover from "./Rover";
 import MarsPlot from "./MarsPlot";
+import React, { CSSProperties, useState } from 'react';
 
-interface Props {
-  onIconClick: () => void; 
-  isOpen: boolean;
-}
+function HamburgerMenu() {
 
-function HamburgerMenu(props: Props) {
+  let [isMenuOpen, setSidebar] = useState(false);
 
-  if (props.isOpen) return (
+  function toggleSidebar() {
+    if (!isMenuOpen) {
+      setSidebar(true)
+    } else {
+      setSidebar(false)
+    }
+  }
+
+  if (isMenuOpen) return (
     <nav style={rootStyle}>
-      <div style={iconStyle} className="icon" onClick={props.onIconClick}>
+      <div style={iconStyle} className="icon" onClick={toggleSidebar}>
         <FontAwesomeIcon style={iconStyle} icon={faTimes} />      
       </div>
       <ul 
         style={{
           ...ulStyle,
-          left: props.isOpen ? 0 : '-100%'
+          left: isMenuOpen ? 0 : '-100%'
         }} 
       >
         <Switch>
-        <Link to="/LandingPage">
+        <Link to="/LandingPage" style={linkStyle}>
           <li style={liStyle}>Hem</li>
         </Link>
           <Route path="/LandingPage" component={LandingPage} />
         </Switch>
 
         <Switch>
-        <Link to="/Rover">          
+        <Link to="/Rover"  style={linkStyle}>          
            <li style={liStyle}>Rover</li>
         </Link>  
           <Route path="/Rover" component={Rover} />
         </Switch>
 
         <Switch>
-          <Link to="/MarsPlot">
+          <Link to="/MarsPlot"  style={linkStyle}>
         <li style={liStyle}>Tomter</li>
           </Link>
           <Route path="/MarsPlot" component={MarsPlot} />
@@ -56,13 +61,13 @@ function HamburgerMenu(props: Props) {
  
   return (
     <nav style={rootStyle}>
-      <div style={iconStyle} className="icon" onClick={props.onIconClick}>
+      <div style={iconStyle} className="icon" onClick={toggleSidebar}>
         <FontAwesomeIcon style={iconStyle} icon={faBars} />
       </div>
       <ul 
         style={{
           ...ulStyle,
-          left: props.isOpen ? 0 : '-100%'
+          left: isMenuOpen ? 0 : '-100%'
         }} 
       >
         <li style={liStyle}>Hem</li>
@@ -97,6 +102,7 @@ const liStyle: CSSProperties = {
   margin: '2rem 0',
   fontSize: '1.75rem',
   color: 'white',
+  textDecoration: 'none'
 }
 
 const iconStyle: CSSProperties = {
@@ -114,6 +120,10 @@ const rootStyle: CSSProperties = {
   position: 'fixed',
   top: '30px',
   left: '40px',
+}
+
+const linkStyle: CSSProperties = {
+  textDecoration: 'none'
 }
 
 export default HamburgerMenu;
