@@ -3,15 +3,21 @@ import Rover from "./components/Rover";
 import MarsPlot from "./components/MarsPlot";
 import LandingPage from "./components/LandingPage";
 import ErrorBoundary from "./components/ErrorBoundary";
-import Layout from './components/Layout';
+    
+import { BrowserRouter } from "react-router-dom";
+// import Rover from "./components/Rover";
+// import MarsPlot from "./components/MarsPlot"
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <ErrorBoundary>
-      <Layout/> 
-    </ErrorBoundary>
-  )
-    
+    <div className="App">
+      <BrowserRouter>
+      
+      <Layout />
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
