@@ -11,6 +11,16 @@ interface State {
 interface Items {
   photos: [],
   img_src: string,
+  id: number,
+  earth_date: string,  
+  rover: Rover[],
+  camera: Camera[]    
+}
+interface Camera {
+  full_name: string
+}
+interface Rover {
+  name: string
 }
 
 class Rover extends Component<Props, State> {
@@ -20,12 +30,12 @@ class Rover extends Component<Props, State> {
     this.state = {
       items: [],
       isLoaded: false,
-    }
+    };
   }
 
   componentDidMount() {
 
-    fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY')
+    fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=1&api_key=DEMO_KEY')
     .then(res => res.json())
     .then(json => {
       this.setState({
@@ -43,10 +53,24 @@ class Rover extends Component<Props, State> {
       return <div>Loading...</div>
     }
 
+    const roverImages = items.map(image => (
+      <div key={image.id}>
+          <img src={image.img_src} alt=""/>
+          <p>{image.earth_date}</p>
+      </div>
+    ))
+
+    console.log(items)
+
     return (
       <div>
         <img src={items[0].img_src} alt=""/>
-          <p>Data has been loaded</p>
+          <p>{items[0].id}</p>
+          <p>{items[0].earth_date}</p>   
+          <div>    
+            {roverImages}
+          </div>
+
       </div>
     )
   }

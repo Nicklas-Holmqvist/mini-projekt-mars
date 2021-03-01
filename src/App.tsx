@@ -5,7 +5,7 @@ import MarsPlot from "./components/MarsPlot"
 function App() {
   return (
     <div className="App">
-      <MarsPlot />
+      {/* <MarsPlot /> */}
       <Rover />
     </div>
   );
