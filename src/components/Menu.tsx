@@ -1,15 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
 import {
-//  BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from 'react-router-dom';
 
-import LandingPage from "./LandingPage";
-import Rover from "./Rover";
-import MarsPlot from "./MarsPlot";
+
 import React, { CSSProperties, useState } from 'react';
 
 function HamburgerMenu() {
@@ -34,27 +29,19 @@ function HamburgerMenu() {
           ...ulStyle,
           left: isMenuOpen ? 0 : '-100%'
         }} 
-      >
-        <Switch>
+      > 
         <Link to="/LandingPage" style={linkStyle}>
           <li style={liStyle}>Hem</li>
         </Link>
-          <Route path="/LandingPage" component={LandingPage} />
-        </Switch>
 
-        <Switch>
         <Link to="/Rover"  style={linkStyle}>          
            <li style={liStyle}>Rover</li>
         </Link>  
-          <Route path="/Rover" component={Rover} />
-        </Switch>
 
-        <Switch>
           <Link to="/MarsPlot"  style={linkStyle}>
         <li style={liStyle}>Tomter</li>
           </Link>
-          <Route path="/MarsPlot" component={MarsPlot} />
-        </Switch>
+
       </ul>
     </nav>
   )
