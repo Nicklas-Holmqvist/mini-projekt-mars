@@ -1,21 +1,23 @@
-import React, { CSSProperties } from 'react';
-import { faMoon } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import HamburgerMenu from './Menu';
-import ErrorBoundary from './ErrorBoundary';
-
-function Header() {
-
-    return (
-        <>
-            <div style={header}>
-                <ErrorBoundary>
-                    <HamburgerMenu />                
-                    <FontAwesomeIcon style={iconStyle} icon={faMoon} />
-                </ErrorBoundary>
-            </div>
-        </>
-    );
+import React, { CSSProperties } from "react";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import HamburgerMenu from "./Menu";
+import ErrorBoundary from "./ErrorBoundary";
+interface Props {
+  text: string;
+}
+function Header(props: { text: React.ReactNode }) {
+  return (
+    <>
+      <div style={header}>
+        <ErrorBoundary>
+          <HamburgerMenu />
+          <FontAwesomeIcon style={iconStyle} icon={faMoon} />
+        </ErrorBoundary>
+        <h2 style={{ fontSize: "40px" }}>{props.text}</h2>
+      </div>
+    </>
+  );
 }
 
 const header: CSSProperties = {
@@ -24,7 +26,7 @@ const header: CSSProperties = {
   color: "white",
   display: "flex",
   alignItems: "center",
-  justifyContent: "space-between",
+  justifyContent: "center",
   padding: "0 1rem",
   position: "fixed",
   top: "0",

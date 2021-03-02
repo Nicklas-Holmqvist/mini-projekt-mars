@@ -3,9 +3,10 @@ import CardContainer from "./Cards/CardContainer";
 import Header from "./Header";
 
 function MarsPlot() {
+  const text = "Tomter";
   return (
     <>
-      <Header></Header>
+      <Header text={text}></Header>
 
       <div style={cardsContainer}>
         <CardContainer />
@@ -34,8 +35,12 @@ const cardContainerStyle: CSSProperties = {
   marginTop: "20rem",
 };
 const cardsContainer: CSSProperties = {
-  height: "100%",
+  height: "auto",
+  minHeight: "100%",
   display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
 };
 
 export default MarsPlot;
