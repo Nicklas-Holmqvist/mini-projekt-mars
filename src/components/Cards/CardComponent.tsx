@@ -8,9 +8,9 @@ interface Props {
 
 const CardComponent = (props: Props) => {
   const images = props.image;
+  const [isZoomed, setZoom] = useState(false);
 
   const imageSrc = `./assets/${images}.jpg`;
-  const [isZoomed, setZoom] = useState(false);
   return (
     <div
       style={{ ...cardContainerStyle, height: !isZoomed ? "500px" : "auto" }}
