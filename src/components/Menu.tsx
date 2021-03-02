@@ -33,6 +33,7 @@ function HamburgerMenu() {
       > 
       {/* Routing in Layout */}
         <Link to="/LandingPage" style={linkStyle} onClick={toggleSidebar}>Hem</Link>
+        <Link to="/MarsInformation" style={linkStyle} onClick={toggleSidebar}>Om Mars</Link>
         <Link to="/Rover" style={linkStyle} onClick={toggleSidebar}>Rover</Link>        
         <Link to="/MarsPlot" style={linkStyle} onClick={toggleSidebar}>Tomter</Link>
         <Link to="/TravelToMars" style={linkStyle} onClick={toggleSidebar}>Res till Mars</Link>
