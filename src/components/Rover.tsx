@@ -117,7 +117,8 @@ const imageContainerStyling: CSSProperties = {
   flexWrap: 'wrap',
   flexDirection: 'row',
   justifyContent: 'space-between',
-  width: '50%',
+  alignItems: 'center',
+  width: '65%',
   margin: '0 auto',
   padding: '1rem',
   color: 'white',
@@ -127,7 +128,7 @@ const imageContainer: CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   height: 'auto',
-  width: '20rem',
+  width: '30rem',
 }
 
 const imageStyling: CSSProperties = {
