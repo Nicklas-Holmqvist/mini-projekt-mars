@@ -6,6 +6,7 @@ import {
 
 
 import React, { CSSProperties, useState } from 'react';
+import ErrorBoundary from './ErrorBoundary';
 
 function HamburgerMenu() {
 
@@ -31,18 +32,11 @@ function HamburgerMenu() {
         }} 
       > 
       {/* Routing in Layout */}
-        <Link to="/LandingPage" style={linkStyle} onClick={toggleSidebar}>
-          <li style={liStyle}>Hem</li>
-        </Link>
-
-        <Link to="/Rover"  style={linkStyle} onClick={toggleSidebar}>          
-           <li style={liStyle}>Rover</li>
-        </Link>  
-
-          <Link to="/MarsPlot"  style={linkStyle} onClick={toggleSidebar}>
-        <li style={liStyle}>Tomter</li>
-          </Link>
-
+        <Link to="/LandingPage" style={linkStyle} onClick={toggleSidebar}>Hem</Link>
+        <Link to="/MarsInformation" style={linkStyle} onClick={toggleSidebar}>Om Mars</Link>
+        <Link to="/Rover" style={linkStyle} onClick={toggleSidebar}>Rover</Link>        
+        <Link to="/MarsPlot" style={linkStyle} onClick={toggleSidebar}>Tomter</Link>
+        <Link to="/TravelToMars" style={linkStyle} onClick={toggleSidebar}>Res till Mars</Link>
       </ul>
     </nav>
   )
@@ -58,9 +52,6 @@ function HamburgerMenu() {
           left: isMenuOpen ? 0 : '-100%'
         }} 
       >
-        <li style={liStyle}>Hem</li>
-        <li style={liStyle}>Rover</li>
-        <li style={liStyle}>Tomter</li>
       </ul>
     </nav>
   )
@@ -82,15 +73,7 @@ const ulStyle: CSSProperties = {
   listStyle: 'none',
   textAlign: 'center',
   zIndex: 5,
-  transition: 'left 600ms'
-}
-
-const liStyle: CSSProperties = {
-  padding: '1.5rem',
-  margin: '2rem 0',
-  fontSize: '1.75rem',
-  color: 'white',
-  textDecoration: 'none'
+  transition: 'left 600ms ease-out'
 }
 
 const iconStyle: CSSProperties = {
@@ -111,7 +94,11 @@ const rootStyle: CSSProperties = {
 }
 
 const linkStyle: CSSProperties = {
-  textDecoration: 'none'
+  textDecoration: 'none',
+  padding: '1rem 1.5rem',
+  margin: '1.25rem 0',
+  fontSize: '1.75rem',
+  color: 'white',
 }
 
 export default HamburgerMenu;
