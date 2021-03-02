@@ -17,7 +17,7 @@ class Layout extends Component {
     
     marsAppStyle: CSSProperties = {
         backgroundColor: '#8A2424',
-        height: '100%',
+        height: 'auto',
         width: '100%',
     }
     

@@ -1,12 +1,18 @@
 import React, { CSSProperties } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
-function Button() {
+interface Props {
+    btnText: string
+}
+
+function Button(props: Props) {
+
+    const btnText = props.btnText;
 
     return (
-        <Link to="/TravelToMars">
-            <button style={buttonStyle}>RES HIT</button>
-        </Link>
+        <button style={buttonStyle}>
+            {btnText}
+        </button>
     )
 }
 
