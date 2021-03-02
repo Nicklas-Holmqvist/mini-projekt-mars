@@ -64,11 +64,11 @@ const cardContainerStyle: CSSProperties = {
   backgroundColor: "white",
   borderRadius: "10px",
   width: "400px",
-  height: "400px",
+  maxHeight: "600px",
   marginTop: "20px",
   marginBottom: "20px",
   boxShadow: "5px 10px 10px #eeee",
-  transition: "height 800ms",
+  transition: "max-height 800ms",
 };
 const imgStyle: CSSProperties = {
   objectFit: "fill",
@@ -76,21 +76,21 @@ const imgStyle: CSSProperties = {
   height: "100%",
   borderTopLeftRadius: "10px",
   borderTopRightRadius: "10px",
-  transition: "height 800ms",
+  transition: "max-height 800ms",
 };
 const imgContainer: CSSProperties = {
   backgroundColor: "#eeee",
   borderTopRightRadius: "10px",
   borderTopLeftRadius: "10px",
-  transition: "height 800ms",
+  transition: "max-height 800ms",
   height: "20rem",
 };
 const leftPadding: CSSProperties = {
   paddingLeft: "10px",
 };
 const isVisible: CSSProperties = {
-  height: "10rem",
-  transition: "height 800ms",
+  maxHeight: "10rem",
+  transition: "max-height 800ms",
   paddingLeft: "10px",
   marginBottom: "10px",
 };
@@ -99,7 +99,7 @@ const flexContainer: CSSProperties = {
   flexDirection: "column",
   justifyContent: "space-between",
   width: "100%",
-  transition: "height 800ms",
+  transition: "max-height 800ms",
 };
 const buttonhiddenStyle: CSSProperties = {
   backgroundColor: "lightgreen",
@@ -107,6 +107,7 @@ const buttonhiddenStyle: CSSProperties = {
   color: "white",
   padding: "10px",
   border: "none",
+  width: "80px",
 };
 
 export default CardComponent;

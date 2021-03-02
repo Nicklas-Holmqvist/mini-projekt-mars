@@ -19,7 +19,7 @@ function MarsPlot() {
 }
 
 const mainContainer: CSSProperties = {
-  background: "#E5E5E5",
+  background: "#8A2424",
   display: "flex",
   // marginTop: '4rem',
 
