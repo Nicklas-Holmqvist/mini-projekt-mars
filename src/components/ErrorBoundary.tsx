@@ -22,6 +22,7 @@ class ErrorBoundary extends Component<Props, State> {
 
   navigateBack = () => {
     this.props.history.goBack();
+    window.location.replace('/')
   }
 
 
