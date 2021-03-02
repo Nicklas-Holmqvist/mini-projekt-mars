@@ -20,7 +20,7 @@ function LandingPage() {
             {/* <Router> */}
                 <Switch>
                         <Link to="/MarsInformation">
-                        <Button />
+                        <Button btnText='Klicka'/>
                         </Link>
                     <Route path="/MarsInformation" component={MarsInformation} />
                      

@@ -1,10 +1,16 @@
 import React, { CSSProperties } from 'react'
 
-function Button() {
+interface Props {
+    btnText: string
+}
+
+function Button(props:Props) {
+
+    const btnText = props.btnText
 
     return (
         <button style={buttonStyle}>
-            Klicka
+            {btnText}
         </button>
     )
 }
@@ -19,7 +25,5 @@ const buttonStyle: CSSProperties = {
     outline: 'none',
     cursor: 'pointer',
 }
-
-
 
 export default Button

@@ -1,10 +1,16 @@
 import React, {Component, CSSProperties } from 'react'
+import { setConstantValue } from 'typescript';
+import Button from './Button'
 
-interface Props{}
+interface Props{
+  increment: () => void
+}
 
 interface State {
   isLoaded: boolean,
   photos: Photo[],
+  page: number,
+  url: string
   
 }
 
@@ -25,16 +31,19 @@ interface Rover {
 class Rover extends Component<Props, State> {
 
   constructor(props: Props) {
-    super(props);
+    super(props)
+    this.increment = this.increment.bind(this)
     this.state = {
       photos: [],
       isLoaded: false,
+      page: 1,
+      url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'
     };
-  }
+  } 
 
   componentDidMount() {
 
-    fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=3&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT')
+    fetch(this.state.url)
     .then(res => res.json())
     .then(json => {
       this.setState({
@@ -42,6 +51,14 @@ class Rover extends Component<Props, State> {
         photos: json.photos || [], 
       })
     });
+  }
+
+  increment() {
+    // console.log(this.state.url)
+      this.setState({ page: this.state.page + 1})
+      this.setState({url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'})
+      console.log(this.state.page)  
+   
   }
 
   render() {
@@ -75,6 +92,11 @@ class Rover extends Component<Props, State> {
           <div>    
             <h2 style={h2Style}>Roverbilder</h2>
             {roverImages}
+            <div style={btnStyling} className="btn-container">
+              <Button btnText='Tillbaka'/>
+              <button onClick={this.increment}>Tillbaka</button>
+              <Button btnText='Nästa'/>
+            </div>
           </div>
 
       </div>
@@ -87,6 +109,7 @@ export default Rover;
 
 const h2Style: CSSProperties = {
   textAlign: 'center',
+  color: 'white',
 }
 
 const imageContainerStyling: CSSProperties = {
@@ -96,6 +119,7 @@ const imageContainerStyling: CSSProperties = {
   width: '50%',
   margin: '0 auto',
   padding: '1rem',
+  color: 'white',
 }
 
 const imageContainer: CSSProperties = {
@@ -115,4 +139,14 @@ const imageInformation: CSSProperties = {
   justifyContent: 'center',
   alignItems: 'center',
   paddingLeft: '2rem'
+}
+
+const btnStyling: CSSProperties = {
+  maxWidth: '48rem',
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  margin: '0 auto',
+  padding: '1rem 0 2rem 0'
 }
