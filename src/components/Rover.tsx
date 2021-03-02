@@ -1,20 +1,19 @@
-import React, {Component } from 'react'
+import React, {Component, CSSProperties } from 'react'
 
 interface Props{}
 
 interface State {
   isLoaded: boolean,
-  items: Items[],
+  photos: Photo[],
   
 }
 
-interface Items {
-  photos: [],
+interface Photo {
   img_src: string,
   id: number,
   earth_date: string,  
-  rover: Rover[],
-  camera: Camera[]    
+  rover: Rover,
+  camera: Camera    
 }
 interface Camera {
   full_name: string
@@ -28,46 +27,53 @@ class Rover extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      items: [],
+      photos: [],
       isLoaded: false,
     };
   }
 
   componentDidMount() {
 
-    fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=1&api_key=DEMO_KEY')
+    fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=3&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT')
     .then(res => res.json())
     .then(json => {
       this.setState({
         isLoaded: true,
-        items: json.photos, 
+        photos: json.photos || [], 
       })
     });
   }
 
   render() {
 
-    const { isLoaded, items } = this.state;
+    const { isLoaded, photos } = this.state;
 
     if (!isLoaded) {
       return <div>Loading...</div>
     }
 
-    const roverImages = items.map(image => (
-      <div key={image.id}>
-          <img src={image.img_src} alt=""/>
-          <p>{image.earth_date}</p>
+    const roverImages = photos.map(image => (
+      <div style={imageContainerStyling} key={image.id}>
+        <div style={imageContainer} className="imageContainer">
+          <img style={imageStyling} src={image.img_src} alt=""/>
+        </div>
+        <div style={imageInformation} className="imageInformation">
+          <div className="text-content">
+            <h3>Bildinformation</h3>
+            <p>Rovernamn: {image.rover.name}</p>
+            <p>Kamera: </p>
+            <p>Bild tagen: {image.earth_date}</p>
+          </div>
+        </div>
       </div>
     ))
 
-    console.log(items)
+    console.log(photos)
 
     return (
       <div>
-        <img src={items[0].img_src} alt=""/>
-          <p>{items[0].id}</p>
-          <p>{items[0].earth_date}</p>   
           <div>    
+            <h2 style={h2Style}>Roverbilder</h2>
             {roverImages}
           </div>
 
@@ -75,7 +81,37 @@ class Rover extends Component<Props, State> {
     )
   }
 
-
-
 }
 export default Rover;
+
+const h2Style: CSSProperties = {
+  textAlign: 'center',
+}
+
+const imageContainerStyling: CSSProperties = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  width: '50%',
+  margin: '0 auto',
+  padding: '1rem',
+}
+
+const imageContainer: CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  width: '30rem',
+  height: 'auto'
+}
+
+const imageStyling: CSSProperties = {
+  width: '100%'
+  
+}
+
+const imageInformation: CSSProperties = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingLeft: '2rem'
+}
