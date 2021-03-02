@@ -24,9 +24,7 @@ class Layout extends Component {
         return (
             <BrowserRouter>
                 <div className="marsApp" style={this.marsAppStyle}>                  
-                    {/* <LandingPage /> */}
-                    {/* <Rover /> */}     
-
+    
                     <Header /> 
                     <Route exact path="/" component={LandingPage} />          
                     <Switch>

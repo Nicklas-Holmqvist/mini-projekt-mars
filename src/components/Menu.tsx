@@ -31,15 +31,15 @@ function HamburgerMenu() {
         }} 
       > 
       {/* Routing in Layout */}
-        <Link to="/LandingPage" style={linkStyle}>
+        <Link to="/LandingPage" style={linkStyle} onClick={toggleSidebar}>
           <li style={liStyle}>Hem</li>
         </Link>
 
-        <Link to="/Rover"  style={linkStyle}>          
+        <Link to="/Rover"  style={linkStyle} onClick={toggleSidebar}>          
            <li style={liStyle}>Rover</li>
         </Link>  
 
-          <Link to="/MarsPlot"  style={linkStyle}>
+          <Link to="/MarsPlot"  style={linkStyle} onClick={toggleSidebar}>
         <li style={liStyle}>Tomter</li>
           </Link>
 
