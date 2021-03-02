@@ -19,20 +19,23 @@ function Header() {
 }
 
 const header: CSSProperties = {
-    background: '#8A2424',
-    height: '5rem',
-    color: 'white',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: '0 1rem'
-}
+  background: "#8A2424",
+  height: "5rem",
+  color: "white",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: "0 1rem",
+  position: "fixed",
+  top: "0",
+  width: "100%",
+};
 
 const iconStyle: CSSProperties = {
-    fontSize: '1.7rem',
-    position: 'fixed',
-    top: '25px',
-    right: '40px'
-}
+  fontSize: "1.7rem",
+  position: "fixed",
+  top: "25px",
+  right: "40px",
+};
 
 export default Header;
