@@ -6,6 +6,7 @@ import {
 
 
 import React, { CSSProperties, useState } from 'react';
+import ErrorBoundary from './ErrorBoundary';
 
 function HamburgerMenu() {
 
@@ -34,6 +35,7 @@ function HamburgerMenu() {
         <Link to="/LandingPage" style={linkStyle} onClick={toggleSidebar}>Hem</Link>
         <Link to="/Rover" style={linkStyle} onClick={toggleSidebar}>Rover</Link>        
         <Link to="/MarsPlot" style={linkStyle} onClick={toggleSidebar}>Tomter</Link>
+        <Link to="/TravelToMars" style={linkStyle} onClick={toggleSidebar}>Res till Mars</Link>
       </ul>
     </nav>
   )
@@ -49,9 +51,6 @@ function HamburgerMenu() {
           left: isMenuOpen ? 0 : '-100%'
         }} 
       >
-        <li style={linkStyle}>Hem</li>
-        <li style={linkStyle}>Rover</li>
-        <li style={linkStyle}>Tomter</li>
       </ul>
     </nav>
   )
@@ -73,7 +72,7 @@ const ulStyle: CSSProperties = {
   listStyle: 'none',
   textAlign: 'center',
   zIndex: 5,
-  transition: 'left 600ms'
+  transition: 'left 600ms ease-out'
 }
 
 const iconStyle: CSSProperties = {
@@ -95,8 +94,8 @@ const rootStyle: CSSProperties = {
 
 const linkStyle: CSSProperties = {
   textDecoration: 'none',
-  padding: '1.5rem',
-  margin: '2rem 0',
+  padding: '1rem 1.5rem',
+  margin: '1.25rem 0',
   fontSize: '1.75rem',
   color: 'white',
 }

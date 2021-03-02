@@ -1,10 +1,11 @@
 import React, { Component, CSSProperties, ErrorInfo } from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom'
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
 
 interface Props extends RouteComponentProps {}
 interface State {
   hasError: boolean;
 }
+
 class ErrorBoundary extends Component<Props, State> {
 
   state: State = {
@@ -20,9 +21,9 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   navigateBack = () => {
-    console.log('back')
     this.props.history.goBack();
   }
+
 
   render() {
     if (this.state.hasError) {
@@ -34,8 +35,9 @@ class ErrorBoundary extends Component<Props, State> {
         </div>
       );
     }
-
+    
     return this.props.children
+    
   }
 }
 
@@ -63,7 +65,8 @@ const buttonStyle: CSSProperties = {
   borderRadius: '6px',
   padding: '.75rem 1.5rem',
   fontFamily: 'inherit',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  outline: 'none'
 }
 
 export default withRouter(ErrorBoundary);

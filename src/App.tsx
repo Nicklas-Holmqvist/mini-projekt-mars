@@ -11,12 +11,11 @@ import Layout from "./components/Layout";
 
 function App() {
   return (
-    <div className="App">
       <BrowserRouter>
-      
-      <Layout />
+        <ErrorBoundary>
+          <Layout />
+        </ErrorBoundary>
       </BrowserRouter>
-    </div>
   );
 }
 
