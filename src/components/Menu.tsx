@@ -1,41 +1,61 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faBars } from '@fortawesome/free-solid-svg-icons'
-import React, { CSSProperties } from 'react';
+import {
+  Link
+} from 'react-router-dom';
 
-interface Props {
-  onIconClick: () => void; 
-  isOpen: boolean;
-}
 
-function HamburgerMenu(props: Props) {
+import React, { CSSProperties, useState } from 'react';
 
-  if (props.isOpen) return (
+function HamburgerMenu() {
+
+  let [isMenuOpen, setSidebar] = useState(false);
+
+  function toggleSidebar() {
+    if (!isMenuOpen) {
+      setSidebar(true)
+    } else {
+      setSidebar(false)
+    }
+  }
+
+  if (isMenuOpen) return (
     <nav style={rootStyle}>
-      <div style={iconStyle} className="icon" onClick={props.onIconClick}>
+      <div style={iconStyle} className="icon" onClick={toggleSidebar}>
         <FontAwesomeIcon style={iconStyle} icon={faTimes} />      
       </div>
       <ul 
         style={{
           ...ulStyle,
-          left: props.isOpen ? 0 : '-100%'
+          left: isMenuOpen ? 0 : '-100%'
         }} 
-      >
-        <li style={liStyle}>Hem</li>
-        <li style={liStyle}>Rover</li>
+      > 
+      {/* Routing in Layout */}
+        <Link to="/LandingPage" style={linkStyle} onClick={toggleSidebar}>
+          <li style={liStyle}>Hem</li>
+        </Link>
+
+        <Link to="/Rover"  style={linkStyle} onClick={toggleSidebar}>          
+           <li style={liStyle}>Rover</li>
+        </Link>  
+
+          <Link to="/MarsPlot"  style={linkStyle} onClick={toggleSidebar}>
         <li style={liStyle}>Tomter</li>
+          </Link>
+
       </ul>
     </nav>
   )
  
   return (
     <nav style={rootStyle}>
-      <div style={iconStyle} className="icon" onClick={props.onIconClick}>
+      <div style={iconStyle} className="icon" onClick={toggleSidebar}>
         <FontAwesomeIcon style={iconStyle} icon={faBars} />
       </div>
       <ul 
         style={{
           ...ulStyle,
-          left: props.isOpen ? 0 : '-100%'
+          left: isMenuOpen ? 0 : '-100%'
         }} 
       >
         <li style={liStyle}>Hem</li>
@@ -70,6 +90,7 @@ const liStyle: CSSProperties = {
   margin: '2rem 0',
   fontSize: '1.75rem',
   color: 'white',
+  textDecoration: 'none'
 }
 
 const iconStyle: CSSProperties = {
@@ -87,6 +108,10 @@ const rootStyle: CSSProperties = {
   position: 'fixed',
   top: '30px',
   left: '40px',
+}
+
+const linkStyle: CSSProperties = {
+  textDecoration: 'none'
 }
 
 export default HamburgerMenu;
