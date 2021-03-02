@@ -18,14 +18,13 @@ function Button(props: Props) {
 
 const buttonStyle: CSSProperties = {
     background: 'white',
-    border: '1px black solid',
-    borderRadius: '.2rem',
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
-    outline: 'none',
+    border: '1px solid black',
+    borderRadius: '6px',
+    padding: '.75rem 1.5rem',
+    fontFamily: 'inherit',
     cursor: 'pointer',
-    padding: '0.5rem',
-    fontFamily: 'Helvetica'
+    outline: 'none',
+    fontSize: '1.2rem'
 }
 
 

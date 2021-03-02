@@ -6,7 +6,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import MarsInformation from "./MarsInformation";
+import TravelToMars from "./TravelToMars";
 
 function LandingPage() {
   return (
@@ -17,10 +17,10 @@ function LandingPage() {
       </div>
       {/* <Router> */}
       <Switch>
-        <Link to="/MarsInformation">
-          <Button btnText="MARS-INFO" />
+        <Link to="/TravelToMars">
+          <Button btnText="Res hit" />
         </Link>
-        <Route path="/MarsInformation" component={MarsInformation} />
+        <Route path="/TravelToMars" component={TravelToMars} />
       </Switch>
       {/* </Router> */}
     </div>
