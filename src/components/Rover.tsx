@@ -89,7 +89,7 @@ class Rover extends Component<Props, State> {
 
     return (
       <div>
-          <div>    
+          <div style={roverSection}>    
             <h2 style={h2Style}>Roverbilder</h2>
             {roverImages}
             <div style={btnStyling} className="btn-container">
@@ -107,9 +107,14 @@ class Rover extends Component<Props, State> {
 
 export default Rover;
 
+const roverSection:CSSProperties = {
+  paddingTop: '6rem'
+}
+
 const h2Style: CSSProperties = {
   textAlign: 'center',
   color: 'white',
+  fontSize: '2rem'
 }
 
 const imageContainerStyling: CSSProperties = {
