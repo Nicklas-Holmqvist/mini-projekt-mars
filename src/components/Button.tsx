@@ -27,6 +27,4 @@ const buttonStyle: CSSProperties = {
     fontSize: '1.2rem'
 }
 
-
-
 export default Button
