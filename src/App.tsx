@@ -3,7 +3,7 @@ import Rover from "./components/Rover";
 import MarsPlot from "./components/MarsPlot";
 import LandingPage from "./components/LandingPage";
 import ErrorBoundary from "./components/ErrorBoundary";
-    
+
 import { BrowserRouter } from "react-router-dom";
 // import Rover from "./components/Rover";
 // import MarsPlot from "./components/MarsPlot"
@@ -13,8 +13,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      
-      <Layout />
+        <Layout />
       </BrowserRouter>
     </div>
   );
