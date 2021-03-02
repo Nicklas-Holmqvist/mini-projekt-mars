@@ -27,9 +27,10 @@ class Layout extends Component {
                     {/* <LandingPage /> */}
                     {/* <Rover /> */}     
 
-                    <Header />           
+                    <Header /> 
+                    <Route exact path="/" component={LandingPage} />          
                     <Switch>
-                        <Route exact path="/LandingPage" component={LandingPage} />               
+                        <Route path="/LandingPage" component={LandingPage} />               
                         <Route path="/MarsInformation" component={MarsInformation} />
                         <Route path="/Rover" component={Rover} />
                         <Route path="/MarsPlot" component={MarsPlot} />                        
