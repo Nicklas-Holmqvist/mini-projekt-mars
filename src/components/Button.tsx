@@ -1,4 +1,5 @@
-import React, { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react'
+// import { Link } from 'react-router-dom'
 
 interface Props {
     btnText: string
@@ -16,8 +17,6 @@ function Button(props: Props) {
 }
 
 const buttonStyle: CSSProperties = {
-    width: '8rem',
-    height: '2.5rem',
     background: 'white',
     border: '1px black solid',
     borderRadius: '.2rem',
