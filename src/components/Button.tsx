@@ -1,10 +1,16 @@
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties } from 'react';
 
-function Button() {
+interface Props {
+    btnText: string
+}
+
+function Button(props: Props) {
+
+    const btnText = props.btnText;
 
     return (
         <button style={buttonStyle}>
-            Klicka
+            {btnText}
         </button>
     )
 }
@@ -16,8 +22,11 @@ const buttonStyle: CSSProperties = {
     border: '1px black solid',
     borderRadius: '.2rem',
     fontSize: '1.2rem',
+    fontWeight: 'bold',
     outline: 'none',
     cursor: 'pointer',
+    padding: '0.5rem',
+    fontFamily: 'Helvetica'
 }
 
 

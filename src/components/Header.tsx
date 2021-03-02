@@ -17,7 +17,7 @@ function Header() {
 }
 
 const header: CSSProperties = {
-    background: '#8A2424',
+    background: '#621919',
     height: '5rem',
     color: 'white',
     display: 'flex',

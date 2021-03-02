@@ -7,6 +7,7 @@ import {
     Link
   } from 'react-router-dom';
 import MarsInformation from './MarsInformation';
+import { callbackify } from 'util';
 
 
 function LandingPage() {
@@ -20,7 +21,7 @@ function LandingPage() {
             {/* <Router> */}
                 <Switch>
                         <Link to="/MarsInformation">
-                        <Button />
+                        <Button btnText='MARS-INFO' />
                         </Link>
                     <Route path="/MarsInformation" component={MarsInformation} />
                      
@@ -35,7 +36,7 @@ const landingPageStyling: CSSProperties = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100%',
+    height: 'calc(100vh - 5rem)',
     width: '100%'
 }
 
