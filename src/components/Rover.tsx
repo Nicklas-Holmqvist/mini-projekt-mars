@@ -78,7 +78,7 @@ class Rover extends Component<Props, State> {
           <div className="text-content">
             <h3>Bildinformation</h3>
             <p>Rovernamn: {image.rover.name}</p>
-            <p>Kamera: </p>
+            <p>Kamera: {image.camera.full_name}</p>
             <p>Bild tagen: {image.earth_date}</p>
           </div>
         </div>
@@ -114,8 +114,9 @@ const h2Style: CSSProperties = {
 
 const imageContainerStyling: CSSProperties = {
   display: 'flex',
+  flexWrap: 'wrap',
   flexDirection: 'row',
-  justifyContent: 'center',
+  justifyContent: 'space-between',
   width: '50%',
   margin: '0 auto',
   padding: '1rem',
@@ -125,8 +126,8 @@ const imageContainerStyling: CSSProperties = {
 const imageContainer: CSSProperties = {
   display: 'flex',
   alignItems: 'center',
-  width: '30rem',
-  height: 'auto'
+  height: 'auto',
+  width: '20rem',
 }
 
 const imageStyling: CSSProperties = {
@@ -136,9 +137,10 @@ const imageStyling: CSSProperties = {
 
 const imageInformation: CSSProperties = {
   display: 'flex',
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
   alignItems: 'center',
-  paddingLeft: '2rem'
+  paddingLeft: '2rem',
+  width: '20rem'
 }
 
 const btnStyling: CSSProperties = {
