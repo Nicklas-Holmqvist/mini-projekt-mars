@@ -24,21 +24,16 @@ class Layout extends Component {
         return (
             <BrowserRouter>
                 <div className="marsApp" style={this.marsAppStyle}>                  
-                    {/* <LandingPage /> */}
-                    {/* <Rover /> */}     
-
-                    <Header />           
-                    <Route exact path="/LandingPage" component={LandingPage} />            
+    
+                    <Header /> 
+                    <Route exact path="/" component={LandingPage} />          
                     <Switch>
-        
-                    <Route path="/MarsInformation" component={MarsInformation} />
-                    <Route path="/Rover" component={Rover} />
-                    <Route path="/MarsPlot" component={MarsPlot} />
-                    
+                        <Route path="/LandingPage" component={LandingPage} />               
+                        <Route path="/MarsInformation" component={MarsInformation} />
+                        <Route path="/Rover" component={Rover} />
+                        <Route path="/MarsPlot" component={MarsPlot} />                        
                     </Switch>
 
-                    {/* <Rover /> */}
-                    {/* <MarsPlot /> */}
                 </div>
             </BrowserRouter>
         )
