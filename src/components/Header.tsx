@@ -1,18 +1,21 @@
-import React, { CSSProperties } from "react";
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import HamburgerMenu from "./Menu";
+import React, { CSSProperties } from 'react';
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import HamburgerMenu from './Menu';
+import ErrorBoundary from './ErrorBoundary';
 
 function Header() {
-  return (
-    <>
-      <div style={header}>
-        <HamburgerMenu />
-        <span></span>
-        <FontAwesomeIcon style={iconStyle} icon={faMoon} />
-      </div>
-    </>
-  );
+
+    return (
+        <>
+            <div style={header}>
+                <ErrorBoundary>
+                    <HamburgerMenu />                
+                    <FontAwesomeIcon style={iconStyle} icon={faMoon} />
+                </ErrorBoundary>
+            </div>
+        </>
+    );
 }
 
 const header: CSSProperties = {

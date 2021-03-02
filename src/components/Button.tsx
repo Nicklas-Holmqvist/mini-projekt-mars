@@ -1,23 +1,24 @@
 import React, { CSSProperties } from 'react'
+import { Link } from 'react-router-dom'
 
 function Button() {
 
     return (
-        <button style={buttonStyle}>
-            Klicka
-        </button>
+        <Link to="/TravelToMars">
+            <button style={buttonStyle}>RES HIT</button>
+        </Link>
     )
 }
 
 const buttonStyle: CSSProperties = {
-    width: '8rem',
-    height: '2.5rem',
     background: 'white',
-    border: '1px black solid',
-    borderRadius: '.2rem',
-    fontSize: '1.2rem',
-    outline: 'none',
+    border: '1px solid black',
+    borderRadius: '6px',
+    padding: '.75rem 1.5rem',
+    fontFamily: 'inherit',
     cursor: 'pointer',
+    outline: 'none',
+    fontSize: '1.2rem'
 }
 
 
