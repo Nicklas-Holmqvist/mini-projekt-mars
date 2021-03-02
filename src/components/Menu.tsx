@@ -30,6 +30,7 @@ function HamburgerMenu() {
           left: isMenuOpen ? 0 : '-100%'
         }} 
       > 
+      {/* Routing in Layout */}
         <Link to="/LandingPage" style={linkStyle}>
           <li style={liStyle}>Hem</li>
         </Link>
