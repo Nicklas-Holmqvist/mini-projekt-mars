@@ -1,35 +1,36 @@
-
 import React, { CSSProperties } from 'react';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import HamburgerMenu from './Menu';
 
 function Header() {
 
-    return(
+    return (
         <>
-        <div style={header}>
-        <FontAwesomeIcon style={iconStyle} icon={faBars} />
-            <h2>Properties on Mars</h2>
-            <span></span>
-
-        </div>
+            <div style={header}>
+                <HamburgerMenu />                
+                <span></span>
+                <FontAwesomeIcon style={iconStyle} icon={faMoon} />
+            </div>
         </>
     );
 }
 
-
 const header: CSSProperties = {
     background: '#8A2424',
+    height: '5rem',
     color: 'white',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '0 1rem'
-
 }
 
 const iconStyle: CSSProperties = {
-    fontSize: '1.7rem'
+    fontSize: '1.7rem',
+    position: 'fixed',
+    top: '25px',
+    right: '40px'
 }
 
 export default Header;

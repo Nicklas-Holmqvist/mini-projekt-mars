@@ -82,6 +82,7 @@ class Rover extends Component<Props, State> {
   }
 
 }
+
 export default Rover;
 
 const h2Style: CSSProperties = {
