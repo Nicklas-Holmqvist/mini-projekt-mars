@@ -35,8 +35,6 @@ class Layout extends Component {
                         <Route path="/MarsPlot" component={MarsPlot} />                        
                     </Switch>
 
-                    {/* <Rover /> */}
-                    {/* <MarsPlot /> */}
                 </div>
             </BrowserRouter>
         )
