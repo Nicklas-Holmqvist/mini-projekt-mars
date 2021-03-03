@@ -4,6 +4,7 @@ interface Props {
   price: number;
   location: string;
   moreInfo: string;
+  modalOpen: () => void;
 }
 
 const CardComponent = (props: Props) => {
@@ -31,7 +32,15 @@ const CardComponent = (props: Props) => {
             <strong> Location:</strong> {props.location}
           </p>
         </div>
-        <div style={{ paddingLeft: "10px" }}>
+        <div
+          style={{
+            paddingLeft: "10px",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            paddingRight: "10px",
+          }}
+        >
           <button
             style={{
               ...toggleInfoButton,
@@ -41,6 +50,16 @@ const CardComponent = (props: Props) => {
             onClick={() => setZoom(!moreInfo)}
           >
             More info
+          </button>
+
+          <button
+            onClick={props.modalOpen}
+            style={{
+              ...toggleInfoButton,
+              backgroundColor: "tomato",
+            }}
+          >
+            Buy
           </button>
         </div>
 
@@ -62,6 +81,8 @@ const cardContainerStyle: CSSProperties = {
   marginBottom: "10px",
   boxShadow: "5px 10px 10px #eee",
   transition: "height 500ms",
+  marginLeft: "30px",
+  marginRight: "30px",
 };
 const imgStyle: CSSProperties = {
   objectFit: "fill",

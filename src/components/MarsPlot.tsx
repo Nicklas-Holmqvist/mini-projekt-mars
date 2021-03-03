@@ -1,16 +1,26 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useState } from "react";
 import CardContainer from "./Cards/CardContainer";
+import Modal from "./Cards/Modal";
 import ErrorBoundary from "./ErrorBoundary";
 import Header from "./Header";
 
 function MarsPlot() {
   const text = "Tomter";
+  const [modalOpen, setOpenModal] = useState(false);
+  const closeModal = () => setOpenModal(false);
+  const openModal = () => setOpenModal(true);
   return (
     <>
       <Header text={text}></Header>
 
       <div style={cardsContainer}>
-        <CardContainer />
+        {modalOpen && (
+          <Modal closeModal={closeModal}>
+            <p>HEj på dig MOdal</p>
+            <button onClick={closeModal}>close Modal</button>
+          </Modal>
+        )}
+        <CardContainer modalOpen={openModal} />
       </div>
       {/* <div style={mainContainer}> */}
       {/* <div className="cardContainer" style={cardContainerStyle}> */}

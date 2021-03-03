@@ -1,7 +1,10 @@
 import React, { CSSProperties } from "react";
 import ErrorBoundary from "../ErrorBoundary";
 import CardComponent from "./CardComponent";
-const CardContainer = () => {
+interface Props {
+  modalOpen: () => void;
+}
+const CardContainer = (props: Props) => {
   const imgCardContainer = [
     {
       img: "canyon",
@@ -39,6 +42,7 @@ const CardContainer = () => {
           price={card.price}
           location={card.location}
           moreInfo={card.moreInfo}
+          modalOpen={props.modalOpen}
         />
       ))}
     </div>
@@ -55,5 +59,6 @@ const containerStyle: CSSProperties = {
   minHeight: "700px",
   alignItems: "center",
   backgroundColor: "#8A2424",
+  marginBottom: "40px",
 };
 export default CardContainer;
