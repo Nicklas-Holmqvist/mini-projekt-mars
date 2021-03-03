@@ -1,17 +1,17 @@
 import React, {Component, CSSProperties } from 'react'
-import { setConstantValue } from 'typescript';
 import Button from './Button'
+import RoverImage from './RoverImage'
 
 interface Props{
   increment: () => void
+  decrease: () => void
 }
 
 interface State {
   isLoaded: boolean,
   photos: Photo[],
   page: number,
-  url: string
-  
+  url: string  
 }
 
 interface Photo {
@@ -33,17 +33,21 @@ class Rover extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.increment = this.increment.bind(this)
+    this.decrease = this.decrease.bind(this)
     this.state = {
       photos: [],
       isLoaded: false,
       page: 1,
-      url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'
+      url: ''
     };
   } 
 
-  componentDidMount() {
+  readonly API_KEY = '&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'
+  readonly API_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&'
 
-    fetch(this.state.url)
+  componentDidMount() {   
+
+    fetch(this.API_URL + 'page=' + this.state.page + this.API_KEY)
     .then(res => res.json())
     .then(json => {
       this.setState({
@@ -53,12 +57,31 @@ class Rover extends Component<Props, State> {
     });
   }
 
+  // TODO: Ska jag försöka få in url state här?
+  // componentDidUpdate(_: Props,prevState: State) {
+  //   const { url } = this.state;
+  //   if (url && prevState.url !== url) {
+      
+  //   }
+  // }
+  // }
+
+  decrease() {
+    if (this.state.page == 1) {
+      return
+    } else {
+    // console.log(this.state.url)
+      this.setState({ page: this.state.page - 1})
+      this.setState({url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'})
+      console.log(this.state.page)     
+    }
+  }
+
   increment() {
     // console.log(this.state.url)
       this.setState({ page: this.state.page + 1})
       this.setState({url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'})
-      console.log(this.state.page)  
-   
+      console.log(this.state.page)     
   }
 
   render() {
@@ -69,10 +92,11 @@ class Rover extends Component<Props, State> {
       return <div>Loading...</div>
     }
 
+    // Mappning av roverImage
     const roverImages = photos.map(image => (
       <div style={imageContainerStyling} key={image.id}>
         <div style={imageContainer} className="imageContainer">
-          <img style={imageStyling} src={image.img_src} alt=""/>
+          <RoverImage imageUrl={image.img_src}/>
         </div>
         <div style={imageInformation} className="imageInformation">
           <div className="text-content">
@@ -94,7 +118,8 @@ class Rover extends Component<Props, State> {
             {roverImages}
             <div style={btnStyling} className="btn-container">
               <Button btnText='Tillbaka'/>
-              <button onClick={this.increment}>Tillbaka</button>
+              <button onClick={this.decrease}>Tillbaka</button>
+              <button onClick={this.increment}>Nästa</button>
               <Button btnText='Nästa'/>
             </div>
           </div>
@@ -102,7 +127,6 @@ class Rover extends Component<Props, State> {
       </div>
     )
   }
-
 }
 
 export default Rover;
@@ -136,10 +160,7 @@ const imageContainer: CSSProperties = {
   width: '30rem',
 }
 
-const imageStyling: CSSProperties = {
-  width: '100%'
-  
-}
+
 
 const imageInformation: CSSProperties = {
   display: 'flex',
