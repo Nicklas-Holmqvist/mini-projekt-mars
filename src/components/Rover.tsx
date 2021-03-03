@@ -112,9 +112,7 @@ class Rover extends Component<Props, State> {
             <Header text='Roverbilder'/>
             {roverImages}
             <div style={btnStyling} className="btn-container">
-
               <Button onClick={this.decrease}  btnText='Tillbaka'/>
-
               <Button onClick={this.increment} btnText='Nästa'/>
             </div>
           </div>
