@@ -2,16 +2,20 @@ import React, { CSSProperties } from 'react';
 import HamburgerMenu from './Menu';
 import ErrorBoundary from './ErrorBoundary';
 
-function Header() {
+interface Props {
+    text: string;
+  }
+
+function Header(props: { text: React.ReactNode }) {
 
     return (
-        <>
-            <div style={header}>
-                <ErrorBoundary>
-                    <HamburgerMenu />                
-                </ErrorBoundary>
-            </div>
-        </>
+
+        <div style={header}>
+            <ErrorBoundary>
+                <HamburgerMenu />                
+            </ErrorBoundary>
+            <h2 style={{ fontSize: "40px" }}>{props.text}</h2>
+        </div>
     );
 }
 
@@ -21,7 +25,7 @@ const header: CSSProperties = {
   color: "white",
   display: "flex",
   alignItems: "center",
-  justifyContent: "space-between",
+  justifyContent: "center",
   padding: "0 1rem",
   position: "fixed",
   top: "0",
