@@ -32,23 +32,29 @@ const landingPageStyling: CSSProperties = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  height: "calc(100vh - 5rem)",
+  height: "100vh",
   width: "100%",
-  paddingTop: "5rem",
+  paddingTop: '1.5rem',
+  boxSizing: 'border-box'
 };
 
 const landingH1eStyle: CSSProperties = {
   fontSize: "4rem",
   color: "white",
+  margin: 0
 };
 
 const landingImageContainer: CSSProperties = {
-  width: "20rem",
-  padding: "3rem 0 4rem 0",
+  width: "100%",
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  margin: '2rem'
 };
 
 const landingImage: CSSProperties = {
-  width: "100%",
+  maxWidth: "20%",
+  minWidth: '16rem'
 };
 
 export default LandingPage;
