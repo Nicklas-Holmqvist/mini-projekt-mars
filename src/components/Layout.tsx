@@ -13,8 +13,8 @@ class Layout extends Component {
   marsAppStyle: CSSProperties = {
     backgroundColor: "#8A2424",
     height: "auto",
-    minHeight: "100%",
     width: "100%",
+    minHeight: "100%",
   };
 
   render() {

@@ -6,7 +6,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import MarsInformation from "./MarsInformation";
+import TravelToMars from "./TravelToMars";
 
 function LandingPage() {
   return (
@@ -17,10 +17,10 @@ function LandingPage() {
       </div>
       {/* <Router> */}
       <Switch>
-        <Link to="/MarsInformation">
-          <Button />
+        <Link to="/TravelToMars">
+          <Button btnText="Res hit" />
         </Link>
-        <Route path="/MarsInformation" component={MarsInformation} />
+        <Route path="/TravelToMars" component={TravelToMars} />
       </Switch>
       {/* </Router> */}
     </div>
@@ -32,7 +32,7 @@ const landingPageStyling: CSSProperties = {
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-  height: "100%",
+  height: "calc(100vh - 5rem)",
   width: "100%",
   paddingTop: "5rem",
 };

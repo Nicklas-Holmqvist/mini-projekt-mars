@@ -1,10 +1,16 @@
 import React, {Component, CSSProperties } from 'react'
+import { setConstantValue } from 'typescript';
+import Button from './Button'
 
-interface Props{}
+interface Props{
+  increment: () => void
+}
 
 interface State {
   isLoaded: boolean,
   photos: Photo[],
+  page: number,
+  url: string
   
 }
 
@@ -25,16 +31,19 @@ interface Rover {
 class Rover extends Component<Props, State> {
 
   constructor(props: Props) {
-    super(props);
+    super(props)
+    this.increment = this.increment.bind(this)
     this.state = {
       photos: [],
       isLoaded: false,
+      page: 1,
+      url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'
     };
-  }
+  } 
 
   componentDidMount() {
 
-    fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=3&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT')
+    fetch(this.state.url)
     .then(res => res.json())
     .then(json => {
       this.setState({
@@ -42,6 +51,14 @@ class Rover extends Component<Props, State> {
         photos: json.photos || [], 
       })
     });
+  }
+
+  increment() {
+    // console.log(this.state.url)
+      this.setState({ page: this.state.page + 1})
+      this.setState({url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'})
+      console.log(this.state.page)  
+   
   }
 
   render() {
@@ -61,7 +78,7 @@ class Rover extends Component<Props, State> {
           <div className="text-content">
             <h3>Bildinformation</h3>
             <p>Rovernamn: {image.rover.name}</p>
-            <p>Kamera: </p>
+            <p>Kamera: {image.camera.full_name}</p>
             <p>Bild tagen: {image.earth_date}</p>
           </div>
         </div>
@@ -72,9 +89,14 @@ class Rover extends Component<Props, State> {
 
     return (
       <div>
-          <div>    
+          <div style={roverSection}>    
             <h2 style={h2Style}>Roverbilder</h2>
             {roverImages}
+            <div style={btnStyling} className="btn-container">
+              <Button btnText='Tillbaka'/>
+              <button onClick={this.increment}>Tillbaka</button>
+              <Button btnText='Nästa'/>
+            </div>
           </div>
 
       </div>
@@ -85,24 +107,33 @@ class Rover extends Component<Props, State> {
 
 export default Rover;
 
+const roverSection:CSSProperties = {
+  paddingTop: '6rem'
+}
+
 const h2Style: CSSProperties = {
   textAlign: 'center',
+  color: 'white',
+  fontSize: '2rem'
 }
 
 const imageContainerStyling: CSSProperties = {
   display: 'flex',
+  flexWrap: 'wrap',
   flexDirection: 'row',
-  justifyContent: 'center',
-  width: '50%',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  width: '65%',
   margin: '0 auto',
   padding: '1rem',
+  color: 'white',
 }
 
 const imageContainer: CSSProperties = {
   display: 'flex',
   alignItems: 'center',
+  height: 'auto',
   width: '30rem',
-  height: 'auto'
 }
 
 const imageStyling: CSSProperties = {
@@ -112,7 +143,18 @@ const imageStyling: CSSProperties = {
 
 const imageInformation: CSSProperties = {
   display: 'flex',
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
   alignItems: 'center',
-  paddingLeft: '2rem'
+  paddingLeft: '2rem',
+  width: '20rem'
+}
+
+const btnStyling: CSSProperties = {
+  maxWidth: '48rem',
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  margin: '0 auto',
+  padding: '1rem 0 2rem 0'
 }
