@@ -1,6 +1,4 @@
 import React, { CSSProperties } from 'react';
-import { faMoon } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HamburgerMenu from './Menu';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -11,7 +9,6 @@ function Header() {
             <div style={header}>
                 <ErrorBoundary>
                     <HamburgerMenu />                
-                    <FontAwesomeIcon style={iconStyle} icon={faMoon} />
                 </ErrorBoundary>
             </div>
         </>
