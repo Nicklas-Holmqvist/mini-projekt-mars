@@ -5,13 +5,14 @@ import RoverImage from './RoverImage'
 interface Props{
   increment: () => void
   decrease: () => void
+  roverUrl: string
 }
 
 interface State {
   isLoaded: boolean,
   photos: Photo[],
   page: number,
-  url: string  
+  url: string,
 }
 
 interface Photo {
@@ -45,6 +46,8 @@ class Rover extends Component<Props, State> {
   readonly API_KEY = '&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'
   readonly API_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&'
 
+
+
   componentDidMount() {   
 
     fetch(this.API_URL + 'page=' + this.state.page + this.API_KEY)
@@ -70,7 +73,6 @@ class Rover extends Component<Props, State> {
     if (this.state.page == 1) {
       return
     } else {
-    // console.log(this.state.url)
       this.setState({ page: this.state.page - 1})
       this.setState({url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'})
       console.log(this.state.page)     
@@ -78,7 +80,7 @@ class Rover extends Component<Props, State> {
   }
 
   increment() {
-    // console.log(this.state.url)
+    console.log(this.state.url)
       this.setState({ page: this.state.page + 1})
       this.setState({url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'})
       console.log(this.state.page)     
