@@ -47,7 +47,16 @@ class Rover extends Component<Props, State> {
 
 
   componentDidMount() {   
-
+    this.fetchRoverData();
+  }
+  
+  componentDidUpdate(_: Props, prevState: State) {
+    if (this.state.page !== prevState.page) {
+      this.fetchRoverData();
+    }
+  }
+  
+  fetchRoverData() {
     fetch(this.API_URL + 'page=' + this.state.page + this.API_KEY)
     .then(res => res.json())
     .then(json => {
@@ -57,15 +66,6 @@ class Rover extends Component<Props, State> {
       })
     });
   }
-
-  // TODO: Ska jag försöka få in url state här?
-  // componentDidUpdate(_: Props,prevState: State) {
-  //   const { url } = this.state;
-  //   if (url && prevState.url !== url) {
-      
-  //   }
-  // }
-  // }
 
   decrease() {
     if (this.state.page == 1) {
@@ -112,10 +112,10 @@ class Rover extends Component<Props, State> {
             <Header text='Roverbilder'/>
             {roverImages}
             <div style={btnStyling} className="btn-container">
-              <Button btnText='Tillbaka'/>
-              <button onClick={this.decrease}>Tillbaka</button>
-              <button onClick={this.increment}>Nästa</button>
-              <Button btnText='Nästa'/>
+
+              <Button onClick={this.decrease}  btnText='Tillbaka'/>
+
+              <Button onClick={this.increment} btnText='Nästa'/>
             </div>
           </div>
       </div>

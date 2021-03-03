@@ -3,6 +3,7 @@ import React, { CSSProperties } from 'react'
 
 interface Props {
     btnText: string
+    onClick?: () => void;
 }
 
 function Button(props: Props) {
@@ -10,7 +11,7 @@ function Button(props: Props) {
     const btnText = props.btnText;
 
     return (
-        <button style={buttonStyle}>
+        <button onClick={props.onClick} style={buttonStyle}>
             {btnText}
         </button>
     )

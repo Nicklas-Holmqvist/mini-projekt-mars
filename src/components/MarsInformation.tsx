@@ -28,7 +28,7 @@ function MarsInformation() {
                     Collected from https://en.wikipedia.org/wiki/Mars
                     </p>
                     <Link to="/MoreMarsInfo">
-                        <Button btnText="Läs Mer" />
+                        <Button btnText="Läs Mer"/>
                     </Link>
                     <Route path="/MoreMarsInfo" component={MoreMarsInfo} />
                 </div>
