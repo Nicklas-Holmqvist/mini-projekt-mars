@@ -1,17 +1,17 @@
 import React, {Component, CSSProperties } from 'react'
-import { setConstantValue } from 'typescript';
 import Button from './Button'
+import Header from './Header'
+import RoverImage from './RoverImage'
 
 interface Props{
   increment: () => void
+  decrease: () => void
 }
 
 interface State {
   isLoaded: boolean,
   photos: Photo[],
   page: number,
-  url: string
-  
 }
 
 interface Photo {
@@ -33,17 +33,31 @@ class Rover extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.increment = this.increment.bind(this)
+    this.decrease = this.decrease.bind(this)
     this.state = {
       photos: [],
       isLoaded: false,
       page: 1,
-      url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'
     };
   } 
 
-  componentDidMount() {
+  readonly API_KEY = '&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'
+  readonly API_URL = 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&'
 
-    fetch(this.state.url)
+
+
+  componentDidMount() {   
+    this.fetchRoverData();
+  }
+  
+  componentDidUpdate(_: Props, prevState: State) {
+    if (this.state.page !== prevState.page) {
+      this.fetchRoverData();
+    }
+  }
+  
+  fetchRoverData() {
+    fetch(this.API_URL + 'page=' + this.state.page + this.API_KEY)
     .then(res => res.json())
     .then(json => {
       this.setState({
@@ -53,15 +67,21 @@ class Rover extends Component<Props, State> {
     });
   }
 
+  decrease() {
+    if (this.state.page == 1) {
+      return
+    } else {
+      this.setState({ page: this.state.page - 1})   
+    }
+  }
+
   increment() {
-    // console.log(this.state.url)
       this.setState({ page: this.state.page + 1})
-      this.setState({url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'})
-      console.log(this.state.page)  
-   
+      
   }
 
   render() {
+    console.log(this.state.page)
 
     const { isLoaded, photos } = this.state;
 
@@ -69,10 +89,11 @@ class Rover extends Component<Props, State> {
       return <div>Loading...</div>
     }
 
+    // Mappning of roverImages
     const roverImages = photos.map(image => (
       <div style={imageContainerStyling} key={image.id}>
         <div style={imageContainer} className="imageContainer">
-          <img style={imageStyling} src={image.img_src} alt=""/>
+          <RoverImage imageUrl={image.img_src}/>
         </div>
         <div style={imageInformation} className="imageInformation">
           <div className="text-content">
@@ -85,24 +106,19 @@ class Rover extends Component<Props, State> {
       </div>
     ))
 
-    console.log(photos)
-
     return (
       <div>
           <div style={roverSection}>    
-            <h2 style={h2Style}>Roverbilder</h2>
+            <Header text='Roverbilder'/>
             {roverImages}
             <div style={btnStyling} className="btn-container">
-              <Button btnText='Tillbaka'/>
-              <button onClick={this.increment}>Tillbaka</button>
-              <Button btnText='Nästa'/>
+              <Button onClick={this.decrease}  btnText='Tillbaka'/>
+              <Button onClick={this.increment} btnText='Nästa'/>
             </div>
           </div>
-
       </div>
     )
   }
-
 }
 
 export default Rover;
@@ -134,11 +150,6 @@ const imageContainer: CSSProperties = {
   alignItems: 'center',
   height: 'auto',
   width: '30rem',
-}
-
-const imageStyling: CSSProperties = {
-  width: '100%'
-  
 }
 
 const imageInformation: CSSProperties = {
