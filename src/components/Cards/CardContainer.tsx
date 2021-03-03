@@ -1,10 +1,14 @@
 import React, { CSSProperties } from "react";
+import { useState } from "react";
 import ErrorBoundary from "../ErrorBoundary";
 import CardComponent from "./CardComponent";
-interface Props {
-  modalOpen: () => void;
-}
+import Modal from "./Modal";
+interface Props {}
+
 const CardContainer = (props: Props) => {
+  const [modalOpen, setOpenModal] = useState(false);
+  const closeModal = () => setOpenModal(false);
+  const openModal = () => setOpenModal(true);
   const imgCardContainer = [
     {
       img: "canyon",
@@ -36,13 +40,19 @@ const CardContainer = (props: Props) => {
 
   return (
     <div style={containerStyle}>
+      {modalOpen && (
+        <Modal closeModal={closeModal}>
+          <p>HEj på dig MOdal</p>
+          <button onClick={closeModal}>close Modal</button>
+        </Modal>
+      )}
       {imgCardContainer.map((card) => (
         <CardComponent
           image={card.img}
           price={card.price}
           location={card.location}
           moreInfo={card.moreInfo}
-          modalOpen={props.modalOpen}
+          modalOpen={openModal}
         />
       ))}
     </div>

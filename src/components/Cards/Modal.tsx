@@ -15,7 +15,7 @@ class Modal extends Component<Props> {
     this.element.className = "modal-root";
   }
   onClickHandeler = () => {
-    this.props.closeModal;
+    this.props.closeModal();
   };
   componentDidMount() {
     document.body.appendChild(this.element);
@@ -25,7 +25,9 @@ class Modal extends Component<Props> {
   }
   render() {
     return ReactDOM.createPortal(
-      <div style={modalStyling}>{this.props.children}</div>,
+      <div onClick={this.onClickHandeler} style={modalStyling}>
+        {this.props.children}
+      </div>,
       this.element
     );
   }
