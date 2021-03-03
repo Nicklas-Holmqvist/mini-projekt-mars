@@ -60,7 +60,7 @@ const cardContainerStyle: CSSProperties = {
   maxHeight: "600px",
   marginTop: "20px",
   marginBottom: "10px",
-  boxShadow: "5px 10px 10px #eeee",
+  boxShadow: "5px 10px 10px #eee",
   transition: "height 500ms",
 };
 const imgStyle: CSSProperties = {
