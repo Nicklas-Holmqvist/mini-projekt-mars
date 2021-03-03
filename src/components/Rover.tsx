@@ -1,18 +1,17 @@
 import React, {Component, CSSProperties } from 'react'
 import Button from './Button'
+import Header from './Header'
 import RoverImage from './RoverImage'
 
 interface Props{
   increment: () => void
   decrease: () => void
-  roverUrl: string
 }
 
 interface State {
   isLoaded: boolean,
   photos: Photo[],
   page: number,
-  url: string,
 }
 
 interface Photo {
@@ -39,7 +38,6 @@ class Rover extends Component<Props, State> {
       photos: [],
       isLoaded: false,
       page: 1,
-      url: ''
     };
   } 
 
@@ -73,20 +71,17 @@ class Rover extends Component<Props, State> {
     if (this.state.page == 1) {
       return
     } else {
-      this.setState({ page: this.state.page - 1})
-      this.setState({url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'})
-      console.log(this.state.page)     
+      this.setState({ page: this.state.page - 1})   
     }
   }
 
   increment() {
-    console.log(this.state.url)
       this.setState({ page: this.state.page + 1})
-      this.setState({url: 'https://api.nasa.gov/mars-photos/api/v1/rovers/Curiosity/photos?sol=1000&page=${this.state.page}&api_key=zfkSEV7bRNw7EcoSFWNx4VgDEIOMjjAmULcT7abT'})
-      console.log(this.state.page)     
+      
   }
 
   render() {
+    console.log(this.state.page)
 
     const { isLoaded, photos } = this.state;
 
@@ -94,7 +89,7 @@ class Rover extends Component<Props, State> {
       return <div>Loading...</div>
     }
 
-    // Mappning av roverImage
+    // Mappning of roverImages
     const roverImages = photos.map(image => (
       <div style={imageContainerStyling} key={image.id}>
         <div style={imageContainer} className="imageContainer">
@@ -111,12 +106,10 @@ class Rover extends Component<Props, State> {
       </div>
     ))
 
-    console.log(photos)
-
     return (
       <div>
           <div style={roverSection}>    
-            <h2 style={h2Style}>Roverbilder</h2>
+            <Header text='Roverbilder'/>
             {roverImages}
             <div style={btnStyling} className="btn-container">
               <Button btnText='Tillbaka'/>
@@ -125,7 +118,6 @@ class Rover extends Component<Props, State> {
               <Button btnText='Nästa'/>
             </div>
           </div>
-
       </div>
     )
   }
@@ -161,8 +153,6 @@ const imageContainer: CSSProperties = {
   height: 'auto',
   width: '30rem',
 }
-
-
 
 const imageInformation: CSSProperties = {
   display: 'flex',
