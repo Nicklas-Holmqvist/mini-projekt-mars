@@ -1,5 +1,6 @@
 import React, { CSSProperties } from "react";
 import CardContainer from "./Cards/CardContainer";
+import ErrorBoundary from "./ErrorBoundary";
 import Header from "./Header";
 
 function MarsPlot() {
