@@ -110,6 +110,10 @@ class Rover extends Component<Props, State> {
       <div>
           <div style={roverSection}>    
             <Header text='Roverbilder'/>
+            <div style={btnStyling} className="btn-container">
+              <Button onClick={this.decrease}  btnText='Tillbaka'/>
+              <Button onClick={this.increment} btnText='Nästa'/>
+            </div>
             {roverImages}
             <div style={btnStyling} className="btn-container">
               <Button onClick={this.decrease}  btnText='Tillbaka'/>
