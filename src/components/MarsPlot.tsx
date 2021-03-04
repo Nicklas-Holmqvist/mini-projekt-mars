@@ -14,10 +14,6 @@ function MarsPlot() {
       <div style={cardsContainer}>
         <CardContainer />
       </div>
-      {/* <div style={mainContainer}> */}
-      {/* <div className="cardContainer" style={cardContainerStyle}> */}
-      {/* </div> */}
-      {/* </div> */}
     </>
   );
 }
