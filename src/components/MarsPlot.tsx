@@ -1,10 +1,12 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useState } from "react";
 import CardContainer from "./Cards/CardContainer";
+import Modal from "./Cards/Modal";
 import ErrorBoundary from "./ErrorBoundary";
 import Header from "./Header";
 
 function MarsPlot() {
   const text = "Tomter";
+
   return (
     <>
       <Header text={text}></Header>
