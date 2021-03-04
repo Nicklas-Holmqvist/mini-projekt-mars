@@ -25,7 +25,7 @@ const CardComponent = (props: Props) => {
       <div style={flexContainer}>
         <div style={{ paddingLeft: "10px" }}>
           <p>
-            <strong>Price:</strong> {props.price}
+            <strong>Pris:</strong> {props.price}
             <strong> $</strong>
           </p>
           <p>
@@ -49,7 +49,7 @@ const CardComponent = (props: Props) => {
             }}
             onClick={() => setZoom(!moreInfo)}
           >
-            More info
+            Mer info
           </button>
 
           <button
@@ -59,7 +59,7 @@ const CardComponent = (props: Props) => {
               backgroundColor: "tomato",
             }}
           >
-            Buy
+            Köp
           </button>
         </div>
 

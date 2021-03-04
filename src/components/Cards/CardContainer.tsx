@@ -33,8 +33,9 @@ const CardContainer = (props: Props) => {
     {
       img: "canyon",
       price: 790,
-      location: "sneby ",
-      moreInfo: "",
+      location: "Sneby ",
+      moreInfo:
+        "Ligger i närheten till Mars största ravin med ett härligt klimat och temperaturer kring 200 - 300 grader året om.",
     },
   ];
 
@@ -42,8 +43,22 @@ const CardContainer = (props: Props) => {
     <div style={containerStyle}>
       {modalOpen && (
         <Modal closeModal={closeModal}>
-          <p>HEj på dig MOdal</p>
-          <button onClick={closeModal}>close Modal</button>
+          <div
+            style={{
+              height: "200px",
+              width: "200px",
+              backgroundColor: "#8A2424",
+              color: "white",
+              padding: "1rem",
+              borderRadius: "5px",
+            }}
+          >
+            <h2>OBS!</h2>
+            <p>Tyvärr ligger vårat betalningssystem nere för tilfället! </p>
+            <button style={buttonStyle} onClick={closeModal}>
+              Stäng
+            </button>
+          </div>
         </Modal>
       )}
       {imgCardContainer.map((card) => (
@@ -70,5 +85,13 @@ const containerStyle: CSSProperties = {
   alignItems: "center",
   backgroundColor: "#8A2424",
   marginBottom: "40px",
+};
+const buttonStyle: CSSProperties = {
+  borderRadius: "3px",
+  color: "black",
+  padding: "10px",
+  border: "none",
+  width: "80px",
+  outline: "none",
 };
 export default CardContainer;
