@@ -76,8 +76,11 @@ class Rover extends Component<Props, State> {
   }
 
   increment() {
-      this.setState({ page: this.state.page + 1})
-      
+    if (this.state.page == 35) {
+      return
+      } else {
+        this.setState({ page: this.state.page + 1})   
+      }   
   }
 
   render() {
